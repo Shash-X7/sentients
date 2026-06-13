@@ -4,9 +4,10 @@ const nextConfig = {
   trailingSlash: true,
   images: {
     unoptimized: true,
+    remotePatterns: [
+      { protocol: "https", hostname: "images.unsplash.com" },
+    ],
   },
-  // Base path only needed if NOT using custom domain.
-  // Since sentients.in is a custom domain, leave basePath empty.
   basePath: "",
   assetPrefix: "",
 };

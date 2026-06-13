@@ -1,55 +1,77 @@
 "use client";
 import { motion } from "framer-motion";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { useTheme } from "@/components/ThemeProvider";
 import { SITE } from "@/lib/config";
 
 const FOCUS = [
-  { id:"cognitive-architectures",  title:"Cognitive Architectures",           description:"How should an AI system's internal structure mirror the layered nature of human cognition? Exploring separation of memory, reasoning and output as distinct architectural concerns." },
-  { id:"memory-systems",           title:"Memory Systems",                     description:"Most AI systems are stateless. What does persistent, structured, contextually-weighted memory look like at the architectural level — and how does it change the quality of reasoning?" },
-  { id:"reasoning-frameworks",     title:"Reasoning Frameworks",               description:"Beyond chain-of-thought prompting — designing explicit reasoning layers that operate on structured knowledge rather than implicitly within a generation pass." },
-  { id:"human-ai-interaction",     title:"Human-AI Interaction",               description:"How do cognitive systems change the nature of human-AI collaboration? Exploring interfaces and interaction models for systems with genuine reasoning and memory." },
-  { id:"consciousness-computing",  title:"Consciousness-Inspired Computing",   description:"Not AGI speculation — but the application of consciousness research (attention, integration, predictive processing) as design inspiration for AI architectures." },
-  { id:"emergence",                title:"Emergence & Knowledge Representation",description:"How do complex system behaviours emerge from structured knowledge representations? Exploring the boundary between retrieval and genuine understanding." },
+  { id:"cognitive",  title:"Cognitive Architectures",            description:"Exploring separation of memory, reasoning and output as distinct architectural concerns — how an AI system's structure can mirror layered cognition." },
+  { id:"memory",     title:"Memory Systems",                     description:"What does persistent, structured, contextually-weighted memory look like at the architectural level — and how does it transform reasoning quality?" },
+  { id:"reasoning",  title:"Reasoning Frameworks",               description:"Designing explicit reasoning layers that operate on structured knowledge rather than implicitly within a generation pass." },
+  { id:"human-ai",   title:"Human-AI Interaction",               description:"Interaction models for systems with genuine reasoning and memory — where the human and the system co-construct understanding." },
+  { id:"conscious",  title:"Consciousness-Inspired Computing",   description:"Applying attention, integration and predictive processing from consciousness research as design inspiration for AI architectures." },
+  { id:"emergence",  title:"Emergence & Knowledge Representation",description:"How complex behaviours emerge from structured knowledge representations — the boundary between retrieval and genuine understanding." },
 ];
 
 const PROJECTS = [
-  { name:"Numocore",          subtitle:"Cognitive reasoning platform",   description:"Research and platform development around advanced cognitive architectures and intelligent reasoning frameworks. Numocore explores how AI systems can reason with continuity rather than retrieve with sophistication.", status:"Active research",    accent:"purple" },
-  { name:"MyItihas",          subtitle:"Structured knowledge & cognition",description:"A knowledge platform where relationships between information are first-class architectural citizens. MyItihas explores contextual understanding through structured knowledge graphs rather than vector-space retrieval.", status:"Active development", accent:"purple" },
-  { name:"Sentients Research",subtitle:"The studio's research track",    description:"The broader research practice behind Sentients — connecting cognitive science, information theory and systems architecture to build the foundations for AI systems that go beyond current paradigms.", status:"Ongoing",            accent:"blue" },
+  { name:"Numocore",           subtitle:"Consciousness-based AI pipeline",  description:"An AI pipeline built around consciousness-inspired architecture — a chatbot system that reasons from awareness primitives rather than pure retrieval. More details to follow.", status:"Research · Placeholder", accent:"purple" },
+  { name:"Massive Dynamics",   subtitle:"AI company · CTO & Co-founder",   description:"Co-founded AI-native company building at the intersection of advanced systems and applied intelligence. Research and product intersect here.", status:"Active company", accent:"blue" },
+  { name:"Sentients Research",  subtitle:"The studio's research track",     description:"The broader research practice behind Sentients — connecting cognitive science, information theory and systems architecture to build the foundations for AI systems that go beyond current paradigms.", status:"Ongoing", accent:"purple" },
 ];
 
 export default function ResearchPage() {
+  const { theme } = useTheme();
+  const s = (v: string) => ({ color: v });
+  const bg = (v: string) => ({ backgroundColor: v });
+  const brd = (v: string) => ({ borderColor: v });
+
   return (
-    <div className="pt-16">
-      <section className="py-28 bg-[#111111] relative overflow-hidden">
-        <div aria-hidden className="pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full opacity-[0.08]" style={{ background:"radial-gradient(circle, #7C3AED 0%, transparent 70%)" }} />
+    <div className="pt-16" style={{ ...bg(theme.bgPrimary), transition: "background-color 1.2s ease" }}>
+
+      {/* Dark hero with Unsplash BG */}
+      <section className="py-28 relative overflow-hidden img-overlay"
+        style={{
+          backgroundImage: `url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1600&q=80&auto=format&fit=crop")`,
+          backgroundSize: "cover", backgroundPosition: "center",
+        }}>
+        <div className="absolute inset-0 z-0" style={{ background: "rgba(6,6,12,0.88)" }} />
         <div className="section-container relative z-10">
-          <motion.div initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.7, ease:[0.25,0.46,0.45,0.94] }}>
-            <p className="text-[0.75rem] font-medium uppercase tracking-[0.14em] text-white/40 mb-5">Cognitive AI Research</p>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: [0.25,0.46,0.45,0.94] }}>
+            <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/40 mb-5">Cognitive AI Research</p>
             <h1 className="text-[3.75rem] font-semibold tracking-[-0.025em] text-white max-w-[18ch] leading-[1.08] mb-6">
               Beyond automation.<br />
-              <span style={{ background:"linear-gradient(135deg, #7C3AED 0%, #2563EB 100%)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>Towards cognition.</span>
+              <span style={{ background: `linear-gradient(135deg,${theme.accentSecondary},${theme.accentPrimary})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                Towards cognition.
+              </span>
             </h1>
-            <p className="text-[1.25rem] text-white/60 max-w-[50ch] leading-[1.7]">A separate pillar from consulting — research and development at the frontier of what AI systems can do. Memory, reasoning, architecture, emergence.</p>
+            <p className="text-[1.15rem] text-white/60 max-w-[50ch] leading-[1.7]">
+              A separate pillar from consulting — research at the frontier of what AI systems can do. Memory, reasoning, consciousness, emergence.
+            </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-28 bg-[#FAFAFA] border-b border-[#E5E5E5]">
+      {/* Research philosophy */}
+      <section className="py-28 border-b" style={{ ...bg(theme.bgSecondary), ...brd(theme.border) }}>
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <FadeIn>
-              <p className="text-[0.75rem] font-medium uppercase tracking-[0.12em] text-[#888888] mb-5">The Research Question</p>
-              <h2 className="text-[2.25rem] font-semibold tracking-[-0.018em] text-[#111111] leading-[1.18] mb-8">Why current AI systems hit a ceiling.</h2>
-              <p className="text-[1.125rem] text-[#555555] leading-[1.75] mb-5 max-w-[44ch]">Today&apos;s AI systems are extraordinarily capable retrieval machines with a generation layer on top. They are not reasoning systems. They have no memory across contexts. They cannot hold structured understanding of relationships between ideas.</p>
-              <p className="text-[1.125rem] text-[#555555] leading-[1.75] max-w-[44ch]">This research track explores the architectural foundations for systems that can genuinely reason — drawing from cognitive science, information theory and systems architecture.</p>
+              <p className="text-[11px] font-medium uppercase tracking-[0.12em] mb-5" style={s(theme.inkTertiary)}>The Research Question</p>
+              <h2 className="text-[2.25rem] font-semibold tracking-[-0.018em] leading-[1.18] mb-8" style={s(theme.inkPrimary)}>Why current AI systems hit a ceiling.</h2>
+              <p className="text-[1.05rem] leading-[1.75] mb-5 max-w-[44ch]" style={s(theme.inkSecondary)}>
+                Today&apos;s AI systems are extraordinary retrieval machines with a generation layer. They are not reasoning systems. They have no persistent memory. They cannot hold structured understanding of relationships between ideas.
+              </p>
+              <p className="text-[1.05rem] leading-[1.75] max-w-[44ch]" style={s(theme.inkSecondary)}>
+                This research track explores the architectural foundations for systems that can genuinely reason — drawing from cognitive science, information theory and systems architecture.
+              </p>
             </FadeIn>
             <FadeIn delay={0.1}>
               <div className="flex flex-col gap-4">
                 {["Systems over models.","Architecture over prompting.","Reasoning over retrieval.","Memory over context windows."].map(p => (
-                  <div key={p} className="px-6 py-4 bg-white border border-[#E5E5E5] rounded-[1rem] flex items-center gap-4 shadow-sm">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] flex-shrink-0" />
-                    <p className="text-[1rem] font-medium text-[#111111]">{p}</p>
+                  <div key={p} className="px-6 py-4 rounded-[1rem] flex items-center gap-4"
+                    style={{ ...bg(theme.bgPrimary), border: `0.5px solid ${theme.border}` }}>
+                    <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: theme.accentSecondary }} />
+                    <p className="text-[15px] font-medium" style={s(theme.inkPrimary)}>{p}</p>
                   </div>
                 ))}
               </div>
@@ -58,19 +80,21 @@ export default function ResearchPage() {
         </div>
       </section>
 
-      <section className="py-28 bg-white border-b border-[#E5E5E5]">
+      {/* Focus areas */}
+      <section className="py-28 border-b" style={{ ...bg(theme.bgPrimary), ...brd(theme.border) }}>
         <div className="section-container">
           <FadeIn className="mb-14">
-            <p className="text-[0.75rem] font-medium uppercase tracking-[0.12em] text-[#888888] mb-5">Focus Areas</p>
-            <h2 className="text-[2.25rem] font-semibold tracking-[-0.018em] text-[#111111] leading-[1.18]">What the research covers.</h2>
+            <p className="text-[11px] font-medium uppercase tracking-[0.12em] mb-5" style={s(theme.inkTertiary)}>Focus Areas</p>
+            <h2 className="text-[2.25rem] font-semibold tracking-[-0.018em] leading-[1.18]" style={s(theme.inkPrimary)}>What the research covers.</h2>
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {FOCUS.map((area, i) => (
               <FadeIn key={area.id} delay={i * 0.07}>
-                <div className="bg-[#FAFAFA] border border-[#E5E5E5] rounded-[1rem] p-7 h-full shadow-sm hover:border-[#7C3AED]/30 transition-colors duration-300">
-                  <div className="w-2 h-2 rounded-full bg-[#7C3AED] mb-5" />
-                  <h3 className="text-[1.125rem] font-semibold text-[#111111] mb-3">{area.title}</h3>
-                  <p className="text-[0.9375rem] text-[#555555] leading-[1.75]">{area.description}</p>
+                <div className="rounded-[1rem] p-7 h-full transition-colors duration-300"
+                  style={{ ...bg(theme.bgSecondary), border: `0.5px solid ${theme.border}` }}>
+                  <div className="w-2 h-2 rounded-full mb-5" style={{ background: theme.accentSecondary }} />
+                  <h3 className="text-[15px] font-semibold mb-3" style={s(theme.inkPrimary)}>{area.title}</h3>
+                  <p className="text-[13px] leading-[1.75]" style={s(theme.inkSecondary)}>{area.description}</p>
                 </div>
               </FadeIn>
             ))}
@@ -78,34 +102,47 @@ export default function ResearchPage() {
         </div>
       </section>
 
-      <section className="py-28 bg-[#FAFAFA] border-b border-[#E5E5E5]">
+      {/* Active projects */}
+      <section className="py-28 border-b" style={{ ...bg(theme.bgSecondary), ...brd(theme.border) }}>
         <div className="section-container">
           <FadeIn className="mb-14">
-            <p className="text-[0.75rem] font-medium uppercase tracking-[0.12em] text-[#888888] mb-5">Active Projects</p>
-            <h2 className="text-[2.25rem] font-semibold tracking-[-0.018em] text-[#111111] leading-[1.18]">Where the research lives.</h2>
+            <p className="text-[11px] font-medium uppercase tracking-[0.12em] mb-5" style={s(theme.inkTertiary)}>Active Projects</p>
+            <h2 className="text-[2.25rem] font-semibold tracking-[-0.018em] leading-[1.18]" style={s(theme.inkPrimary)}>Where the research lives.</h2>
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {PROJECTS.map((proj, i) => (
-              <FadeIn key={proj.name} delay={i * 0.1}>
-                <div className="bg-white border border-[#E5E5E5] rounded-[1rem] p-8 h-full shadow-sm hover:border-[#7C3AED]/30 transition-colors duration-300">
-                  <span className={`text-[0.75rem] font-medium uppercase tracking-widest block mb-6 ${proj.accent === "purple" ? "text-[#7C3AED]" : "text-[#2563EB]"}`}>{proj.status}</span>
-                  <h3 className="text-[1.875rem] font-semibold text-[#111111] mb-2">{proj.name}</h3>
-                  <p className="text-[0.9375rem] text-[#888888] font-medium mb-5">{proj.subtitle}</p>
-                  <p className="text-[0.9375rem] text-[#555555] leading-[1.75]">{proj.description}</p>
-                </div>
-              </FadeIn>
-            ))}
+            {PROJECTS.map((proj, i) => {
+              const ac = proj.accent === "purple" ? theme.accentSecondary : theme.accentPrimary;
+              return (
+                <FadeIn key={proj.name} delay={i * 0.1}>
+                  <div className="rounded-[1rem] p-8 h-full transition-colors duration-300"
+                    style={{ ...bg(theme.bgPrimary), border: `0.5px solid ${theme.border}` }}>
+                    <span className="text-[11px] font-medium uppercase tracking-widest block mb-6" style={s(ac)}>{proj.status}</span>
+                    <h3 className="text-[1.875rem] font-semibold mb-2" style={s(theme.inkPrimary)}>{proj.name}</h3>
+                    <p className="text-[13px] font-medium mb-5" style={s(theme.inkTertiary)}>{proj.subtitle}</p>
+                    <p className="text-[13px] leading-[1.75]" style={s(theme.inkSecondary)}>{proj.description}</p>
+                  </div>
+                </FadeIn>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="py-28 bg-[#111111] relative overflow-hidden">
-        <div aria-hidden className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full opacity-[0.08]" style={{ background:"radial-gradient(ellipse, #7C3AED 0%, transparent 70%)" }} />
+      {/* Collaboration CTA */}
+      <section className="py-28 relative overflow-hidden img-overlay"
+        style={{
+          backgroundImage: `url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80&auto=format&fit=crop")`,
+          backgroundSize: "cover", backgroundPosition: "center",
+        }}>
+        <div className="absolute inset-0 z-0" style={{ background: "rgba(6,6,12,0.90)" }} />
         <div className="section-container relative z-10 text-center">
           <FadeIn>
             <h2 className="text-[2.25rem] font-semibold tracking-[-0.018em] text-white mb-6 leading-[1.15]">Interested in collaborating<br />on this research?</h2>
-            <p className="text-[1.125rem] text-white/60 max-w-[44ch] mx-auto mb-10 leading-[1.75]">Deep-tech collaborations, research partnerships and university engagements welcome.</p>
-            <a href={`mailto:${SITE.email}`} className="inline-flex items-center gap-2 px-8 py-3.5 rounded-[999px] bg-white text-[#111111] text-[0.9375rem] font-medium transition-all duration-200 hover:bg-white/90 active:scale-[0.98]">Get in touch</a>
+            <p className="text-[1.05rem] text-white/60 max-w-[44ch] mx-auto mb-10 leading-[1.75]">Deep-tech collaborations, research partnerships and university engagements welcome.</p>
+            <a href={`mailto:${SITE.email}`}
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white text-[#111111] text-[14px] font-medium transition-all duration-200 hover:bg-white/90 active:scale-[0.98]">
+              Get in touch
+            </a>
           </FadeIn>
         </div>
       </section>
