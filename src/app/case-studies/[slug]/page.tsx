@@ -1,4 +1,5 @@
-import { CONTENT, CaseStudyClient } from "./CaseStudyClient";
+import { CONTENT } from "./caseStudyData";
+import { CaseStudyClient } from "./CaseStudyClient";
 
 export function generateStaticParams() {
   return Object.keys(CONTENT).map(slug => ({ slug }));
