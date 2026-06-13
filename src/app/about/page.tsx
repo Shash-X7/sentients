@@ -1,7 +1,4 @@
 import type { Metadata } from "next";
-import { FadeIn } from "@/components/ui/FadeIn";
-import { Button } from "@/components/ui/Button";
-import { FOUNDER, TIMELINE, SITE } from "@/lib/config";
 import { AboutClient } from "./AboutClient";
 
 export const metadata: Metadata = {
