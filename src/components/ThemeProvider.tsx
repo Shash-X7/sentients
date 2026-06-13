@@ -18,10 +18,12 @@ const ThemeContext = createContext<ThemeContextValue>({
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [autoMode, setAutoMode]         = useState<TimeMode>("noon");
+  const [autoMode, setAutoMode]         = useState<TimeMode>("noon"); // always noon on SSR
+  const [mounted, setMounted]            = useState(false);
   const [isMidnightForced, setMidnight] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const update = () => setAutoMode(getCurrentTheme());
     update();
     const id = setInterval(update, 60_000);
@@ -66,6 +68,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     r.setProperty("--s-cta-t",     theme.ctaText);
     r.setProperty("--s-out-bdr",   theme.outlineBorder);
     r.setProperty("--s-out-t",     theme.outlineText);
+    r.setProperty("--hero-grad",   theme.accentGradient);
   }, [theme]);
 
   return (

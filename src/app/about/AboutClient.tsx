@@ -18,76 +18,85 @@ const BIO_PARAS = [
 export function AboutClient() {
   const { theme } = useTheme();
   const [imgError, setImgError] = useState(false);
-  const s  = (v: string) => ({ color: v });
-  const bg = (v: string) => ({ backgroundColor: v });
+  const s   = (v: string) => ({ color: v });
+  const bg  = (v: string) => ({ backgroundColor: v });
   const brd = (v: string) => ({ borderColor: v });
 
   return (
-    <div className="pt-16" style={{ ...bg(theme.bgPrimary), transition: "background-color 1.2s ease" }}>
+    <div style={{ ...bg(theme.bgPrimary), transition: "background-color 1.2s ease" }}>
 
-      {/* ── Header + Photo ── */}
-      <section className="py-28 border-b" style={{ ...bg(theme.bgPrimary), ...brd(theme.border) }}>
-        <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      {/* ── HERO — full-width photo, fades into page bg at bottom ── */}
+      <section className="relative w-full overflow-hidden" style={{ minHeight: "90vh", paddingTop: "64px" }}>
 
-            <FadeIn>
-              <p className="text-[11px] font-medium uppercase tracking-[0.12em] mb-5" style={s(theme.inkTertiary)}>About</p>
-              <h1 className="text-[3.75rem] font-semibold tracking-[-0.025em] leading-[1.08] mb-6" style={s(theme.inkPrimary)}>
-                {FOUNDER.name}
-              </h1>
-              <p className="text-[1.15rem] leading-[1.7] max-w-[44ch]" style={s(theme.inkSecondary)}>
-                {FOUNDER.title}
-              </p>
-              <div className="flex flex-col gap-2 mt-8">
-                {FOUNDER.philosophy.map(p => (
-                  <p key={p} className="text-[15px] font-medium" style={s(theme.inkTertiary)}>— {p}</p>
-                ))}
-              </div>
-            </FadeIn>
+        {/* Nebula atmosphere — local asset */}
+        <div className="absolute inset-0"
+          style={{ backgroundImage:`url("/assets/pexels-yihan-wang-2148192610-30327373.jpg")`, backgroundSize:"cover", backgroundPosition:"center", opacity: 0.12 }} />
 
-            {/* Photo */}
-            <FadeIn delay={0.15} className="flex justify-center lg:justify-end">
-              <div className="relative w-72 h-[420px] rounded-[1.5rem] overflow-hidden"
-                style={{ border: `1px solid ${theme.border}` }}>
-                {!imgError ? (
-                  <img
-                    src="/images/shaashwath.jpg"
-                    alt="Shaashwath Vijayakumar"
-                    className="w-full h-full object-cover object-top"
-                    onError={() => setImgError(true)}
-                  />
-                ) : (
-                  /* Gradient placeholder until photo is added */
-                  <div className="w-full h-full flex flex-col items-center justify-end pb-8"
-                    style={{ background: `linear-gradient(160deg, color-mix(in srgb, ${theme.accentPrimary} 30%, ${theme.bgSecondary}) 0%, ${theme.bgSecondary} 100%)` }}>
-                    <div className="w-20 h-20 rounded-full mb-4 flex items-center justify-center text-2xl font-bold"
-                      style={{ background: theme.accentPrimary, color: "#fff" }}>
-                      SV
-                    </div>
-                    <p className="text-[12px] font-medium uppercase tracking-wider text-center px-4" style={s(theme.inkTertiary)}>
-                      Shaashwath Vijayakumar
-                    </p>
-                  </div>
-                )}
-                {/* Bottom gradient fade */}
-                <div className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
-                  style={{ background: `linear-gradient(to top, color-mix(in srgb, ${theme.bgPrimary} 70%, transparent), transparent)` }} />
-              </div>
-            </FadeIn>
+        {/* Full-bleed photo — object-top ensures head is never cropped */}
+        {!imgError ? (
+          <img
+            src="/images/shaashwath.jpg"
+            alt="Shaashwath Vijayakumar"
+            onError={() => setImgError(true)}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: "center 10%", filter: "grayscale(100%) contrast(1.05) brightness(0.88)" }}
+          />
+        ) : (
+          /* Gradient placeholder */
+          <div className="absolute inset-0"
+            style={{ background: `linear-gradient(160deg, color-mix(in srgb, ${theme.accentPrimary} 25%, ${theme.bgPrimary}) 0%, ${theme.bgSecondary} 100%)` }} />
+        )}
 
-          </div>
+        {/* Left-side dark vignette — so text is readable */}
+        <div className="absolute inset-0"
+          style={{ background: `linear-gradient(100deg, color-mix(in srgb, ${theme.bgPrimary} 75%, transparent) 0%, color-mix(in srgb, ${theme.bgPrimary} 40%, transparent) 45%, transparent 70%)` }} />
+
+        {/* Bottom fade — blends photo into page background */}
+        <div className="absolute bottom-0 left-0 right-0 h-[45%]"
+          style={{ background: `linear-gradient(to bottom, transparent 0%, ${theme.bgPrimary} 100%)` }} />
+
+        {/* Text — overlaid on left */}
+        <div className="section-container relative z-10 flex flex-col justify-end h-full" style={{ minHeight: "90vh", paddingBottom: "5rem" }}>
+          <FadeIn>
+            <p className="text-[11px] font-medium uppercase tracking-[0.14em] mb-5" style={s(theme.inkTertiary)}>About</p>
+            <h1 className="text-[4rem] md:text-[5rem] font-semibold tracking-[-0.03em] leading-[1.05] mb-6" style={s(theme.inkPrimary)}>
+              {FOUNDER.name}
+            </h1>
+            <p className="text-[1.1rem] max-w-[44ch] leading-[1.7] mb-8" style={s(theme.inkSecondary)}>
+              {FOUNDER.title}
+            </p>
+            <div className="flex flex-col gap-2 mb-10">
+              {FOUNDER.philosophy.map(p => (
+                <p key={p} className="text-[15px] font-medium" style={s(theme.inkTertiary)}>— {p}</p>
+              ))}
+            </div>
+            {/* Identity chips */}
+            <div className="flex flex-wrap gap-3">
+              {[
+                { label: "Sentients", sub: "Founder" },
+                { label: "Massive Dynamics", sub: "CTO & Co-founder" },
+                { label: "HR Monster", sub: "Agentic Automation Lead" },
+              ].map(chip => (
+                <div key={chip.label} className="flex flex-col px-4 py-2.5 rounded-[1rem]"
+                  style={{ background: `color-mix(in srgb, ${theme.bgPrimary} 70%, transparent)`, border: `0.5px solid ${theme.border}`, backdropFilter: "blur(12px)" }}>
+                  <span className="text-[12px] font-semibold" style={s(theme.inkPrimary)}>{chip.label}</span>
+                  <span className="text-[10px] font-medium uppercase tracking-wider" style={s(theme.inkTertiary)}>{chip.sub}</span>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
         </div>
       </section>
 
-      {/* ── Bio ── */}
-      <section className="py-28 border-b" style={{ ...bg(theme.bgSecondary), ...brd(theme.border) }}>
+      {/* ── BIO + IDENTITY CARD ── */}
+      <section className="py-24 border-b" style={{ ...bg(theme.bgSecondary), ...brd(theme.border) }}>
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
             <div className="lg:col-span-2">
               <FadeIn>
                 <p className="text-[11px] font-medium uppercase tracking-[0.12em] mb-6" style={s(theme.inkTertiary)}>The Story</p>
                 {BIO_PARAS.map((para, i) => (
-                  <p key={i} className="text-[1.05rem] leading-[1.8] mb-6 max-w-[54ch]" style={s(theme.inkSecondary)}>{para}</p>
+                  <p key={i} className="text-[1.05rem] leading-[1.85] mb-6 max-w-[54ch]" style={s(theme.inkSecondary)}>{para}</p>
                 ))}
               </FadeIn>
             </div>
@@ -99,7 +108,7 @@ export function AboutClient() {
                     { label: "Product",    value: "Technical Product Owner" },
                     { label: "Automation", value: "AI Systems Automation Engineer" },
                     { label: "Research",   value: "Cognitive AI Systems Engineer" },
-                    { label: "Companies",  value: "Sentients (Founder) · Massive Dynamics (CTO)" },
+                    { label: "Companies",  value: "Sentients · Massive Dynamics" },
                     { label: "Location",   value: SITE.location },
                     { label: "Contact",    value: SITE.email },
                   ].map(row => (
@@ -115,8 +124,8 @@ export function AboutClient() {
         </div>
       </section>
 
-      {/* ── Timeline ── */}
-      <section className="py-28 border-b" style={{ ...bg(theme.bgPrimary), ...brd(theme.border) }}>
+      {/* ── TIMELINE ── */}
+      <section className="py-24 border-b" style={{ ...bg(theme.bgPrimary), ...brd(theme.border) }}>
         <div className="section-container">
           <FadeIn className="mb-14">
             <p className="text-[11px] font-medium uppercase tracking-[0.12em] mb-5" style={s(theme.inkTertiary)}>Career</p>
@@ -147,8 +156,8 @@ export function AboutClient() {
         </div>
       </section>
 
-      {/* ── What Sentients is / is not ── */}
-      <section className="py-28 border-b" style={{ ...bg(theme.bgSecondary), ...brd(theme.border) }}>
+      {/* ── POSITIONING ── */}
+      <section className="py-24 border-b" style={{ ...bg(theme.bgSecondary), ...brd(theme.border) }}>
         <div className="section-container">
           <FadeIn className="mb-14">
             <p className="text-[11px] font-medium uppercase tracking-[0.12em] mb-5" style={s(theme.inkTertiary)}>Positioning</p>
@@ -184,7 +193,7 @@ export function AboutClient() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-28" style={{ ...bg(theme.bgPrimary) }}>
+      <section className="py-24" style={{ ...bg(theme.bgPrimary) }}>
         <div className="section-container">
           <FadeIn className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div>

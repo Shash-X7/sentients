@@ -26,7 +26,7 @@ export const viewport: Viewport = { width: "device-width", initialScale: 1, them
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="antialiased" style={{ backgroundColor: "var(--s-bg)", color: "var(--s-ink)" }}>
+      <body className="antialiased" style={{ backgroundColor: "var(--s-bg)", color: "var(--s-ink)" }} suppressHydrationWarning>
         <ThemeProvider>
           <Nav />
           <PageTransition>

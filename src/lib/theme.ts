@@ -122,27 +122,27 @@ export const THEMES: Record<TimeMode, ThemeConfig> = {
     outlineText:    "#EEEEFF",
   },
   midnight: {
-    mode: "midnight", label: "Midnight", hours: [22, 5], dot: "#5050C0",
+    mode: "midnight", label: "Midnight", hours: [22, 5], dot: "#818CF8",
     bgPrimary:      "#050508",
-    bgSecondary:    "#080818",
-    heroGradient:   "linear-gradient(160deg,#050508 0%,#08081A 60%,#090815 100%)",
-    inkPrimary:     "#D8D8F8",   // bright ash-blue — was #C0C0E8, now brighter
-    inkSecondary:   "#9090C0",   // was #606080 — doubled the brightness
-    inkTertiary:    "#6060A0",   // was #383858 — much more visible
-    border:         "#181830",   // was #141420 — slightly more visible
-    borderStrong:   "#303060",   // was #282840 — more visible
-    accentPrimary:  "#7070D0",   // was #4040A0 — brighter, readable
-    accentSecondary:"#8080E0",   // was #5050C0 — brighter
-    accentGradient: "linear-gradient(120deg,#7070D0,#8080E0)",
+    bgSecondary:    "#08091A",
+    heroGradient:   "linear-gradient(160deg,#050508 0%,#07081A 60%,#080715 100%)",
+    inkPrimary:     "#F4F4FF",   // near-pure white — maximum contrast
+    inkSecondary:   "#C8C8F0",   // bright lavender-white — clearly readable
+    inkTertiary:    "#8888CC",   // visible mid-tone — not muddy
+    border:         "#1E1E3C",
+    borderStrong:   "#3C3C70",
+    accentPrimary:  "#818CF8",   // indigo-500 equivalent — vivid
+    accentSecondary:"#A78BFA",   // violet-400 — vivid
+    accentGradient: "linear-gradient(120deg,#818CF8,#A78BFA)",
     navBg:          "#050508",
-    cardBg:         "#0C0C20",
-    pillBg:         "#10102A",
-    pillText:       "#9090E0",   // was #6060A0 — much more visible
-    pillBorder:     "#303060",
-    ctaBg:          "#7070D0",   // was #1A1A3A — now an actual visible button
-    ctaText:        "#FFFFFF",   // was #8080C0 — now pure white
-    outlineBorder:  "#303060",
-    outlineText:    "#D8D8F8",
+    cardBg:         "#0D0D22",
+    pillBg:         "#141430",
+    pillText:       "#A5B4FC",   // indigo-300 — bright and vivid
+    pillBorder:     "#3730A3",
+    ctaBg:          "#818CF8",   // vivid indigo button
+    ctaText:        "#FFFFFF",
+    outlineBorder:  "#3C3C70",
+    outlineText:    "#F4F4FF",
   },
 };
 
