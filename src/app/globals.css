@@ -3,30 +3,29 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Sentients time-mode CSS variables (set by ThemeProvider) ── */
 :root {
-  --s-bg:     #FFFFFF;
-  --s-bg2:    #FAFAFA;
-  --s-bgg:    linear-gradient(160deg,#FFFFFF 0%,#F8FAFF 60%,#EEF4FF 100%);
-  --s-ink:    #111111;
-  --s-ink2:   #555555;
-  --s-ink3:   #888888;
-  --s-bdr:    #E5E5E5;
-  --s-bdr2:   #CCCCCC;
-  --s-acc:    #2563EB;
-  --s-acc2:   #7C3AED;
-  --s-accg:   linear-gradient(120deg,#2563EB,#7C3AED);
-  --s-nav:    #FFFFFF;
-  --s-card:   #FAFAFA;
-  --s-pill:   #EEF4FF;
-  --s-pill-t: #1A4A9A;
-  --s-pill-b: #C0D8FF;
-  --s-cta:    #111111;
-  --s-cta-t:  #FFFFFF;
-  --ease-p:   cubic-bezier(0.25,0.46,0.45,0.94);
+  --s-bg:      #FFFFFF;
+  --s-bg2:     #FAFAFA;
+  --s-ink:     #0A0A0A;
+  --s-ink2:    #3A3A3A;
+  --s-ink3:    #666666;
+  --s-bdr:     #E0E0E0;
+  --s-bdr2:    #BBBBBB;
+  --s-acc:     #1D55D4;
+  --s-acc2:    #6B2FD4;
+  --s-accg:    linear-gradient(120deg,#1D55D4,#6B2FD4);
+  --s-nav:     #FFFFFF;
+  --s-card:    #F5F5F5;
+  --s-pill:    #E8F0FE;
+  --s-pill-t:  #1238A0;
+  --s-pill-b:  #A8C4F8;
+  --s-cta:     #0A0A0A;
+  --s-cta-t:   #FFFFFF;
+  --s-out-bdr: #BBBBBB;
+  --s-out-t:   #0A0A0A;
+  --ease-p:    cubic-bezier(0.25,0.46,0.45,0.94);
 }
 
-/* Smooth mode transitions */
 html { transition: background-color 1.2s ease, color 1.2s ease; }
 
 @layer base {
@@ -41,32 +40,13 @@ html { transition: background-color 1.2s ease, color 1.2s ease; }
   }
   body { background-color: var(--s-bg); color: var(--s-ink); }
   :focus-visible { outline: 2px solid var(--s-acc); outline-offset: 3px; border-radius: 4px; }
-  ::selection   { background-color: color-mix(in srgb, var(--s-acc) 15%, transparent); }
+  ::selection { background-color: color-mix(in srgb, var(--s-acc) 20%, transparent); }
 }
 
 @layer utilities {
-  /* Gradient text using current accent */
-  .text-accent-gradient {
-    background: var(--s-accg);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
   .section-container {
     @apply mx-auto w-full max-w-[1200px] px-6 md:px-10 lg:px-16;
   }
-  /* Themed surface classes */
-  .s-bg       { background-color: var(--s-bg); }
-  .s-bg2      { background-color: var(--s-bg2); }
-  .s-ink      { color: var(--s-ink); }
-  .s-ink2     { color: var(--s-ink2); }
-  .s-ink3     { color: var(--s-ink3); }
-  .s-border   { border-color: var(--s-bdr); }
-  .s-card     { background-color: var(--s-card); border-color: var(--s-bdr); }
-  .s-acc      { color: var(--s-acc); }
-
-  /* Hero gradient background */
-  .hero-gradient { background: var(--s-bgg); }
 
   /* Midnight toggle button */
   .midnight-toggle {
@@ -80,20 +60,16 @@ html { transition: background-color 1.2s ease, color 1.2s ease; }
   }
   .midnight-toggle:hover { opacity: 0.8; }
 
-  /* Unsplash image overlay — keeps text readable over bg images */
-  .img-overlay {
-    position: relative; overflow: hidden;
-  }
+  /* Image overlay helper */
+  .img-overlay { position: relative; overflow: hidden; }
   .img-overlay::before {
-    content: "";
-    position: absolute; inset: 0; z-index: 0;
+    content: ""; position: absolute; inset: 0; z-index: 0;
     background: color-mix(in srgb, var(--s-bg) 72%, transparent);
   }
   .img-overlay > * { position: relative; z-index: 1; }
 
-  /* Card hover lift */
   .card-lift {
-    transition: transform 0.3s var(--ease-p), box-shadow 0.3s var(--ease-p);
+    transition: transform 0.3s var(--ease-p);
   }
   .card-lift:hover { transform: translateY(-3px); }
 }

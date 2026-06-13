@@ -3,12 +3,11 @@ export type TimeMode = "dawn" | "noon" | "dusk" | "twilight" | "midnight";
 export interface ThemeConfig {
   mode: TimeMode;
   label: string;
-  hours: [number, number]; // [start, end)
+  hours: [number, number];
   dot: string;
-  // CSS custom property values
   bgPrimary: string;
   bgSecondary: string;
-  bgGradient: string;
+  heroGradient: string;   // hero section background — no image
   inkPrimary: string;
   inkSecondary: string;
   inkTertiary: string;
@@ -24,6 +23,9 @@ export interface ThemeConfig {
   pillBorder: string;
   ctaBg: string;
   ctaText: string;
+  // secondary button (outline style) colours
+  outlineBorder: string;
+  outlineText: string;
 }
 
 export const THEMES: Record<TimeMode, ThemeConfig> = {
@@ -31,106 +33,116 @@ export const THEMES: Record<TimeMode, ThemeConfig> = {
     mode: "dawn", label: "Dawn", hours: [5, 9], dot: "#E8923A",
     bgPrimary:      "#FBF7F2",
     bgSecondary:    "#FDF0DC",
-    bgGradient:     "linear-gradient(160deg,#FBF7F2 0%,#FDF0DC 60%,#FDDDB8 100%)",
-    inkPrimary:     "#2C1A0A",
-    inkSecondary:   "#6B4A2A",
-    inkTertiary:    "#9A7050",
+    heroGradient:   "linear-gradient(160deg,#FBF7F2 0%,#FDF0DC 55%,#FDDDB8 100%)",
+    inkPrimary:     "#1E0E04",   // very dark espresso — max contrast on ivory
+    inkSecondary:   "#5C3A18",   // warm dark brown — readable
+    inkTertiary:    "#8A5C30",   // mid amber-brown — labels
     border:         "#EDE4D8",
     borderStrong:   "#C9A070",
-    accentPrimary:  "#C46D2A",
+    accentPrimary:  "#B85A1A",
     accentSecondary:"#E8923A",
-    accentGradient: "linear-gradient(120deg,#C46D2A,#E8923A)",
+    accentGradient: "linear-gradient(120deg,#B85A1A,#E8923A)",
     navBg:          "#FBF7F2",
     cardBg:         "#FDF0DC",
-    pillBg:         "#FDF0E0",
-    pillText:       "#A0612A",
-    pillBorder:     "#E8C9A0",
-    ctaBg:          "#2C1A0A",
+    pillBg:         "#FDE8C8",
+    pillText:       "#7A3808",
+    pillBorder:     "#D8A060",
+    ctaBg:          "#1E0E04",
     ctaText:        "#FBF7F2",
+    outlineBorder:  "#C9A070",
+    outlineText:    "#1E0E04",
   },
   noon: {
     mode: "noon", label: "Noon", hours: [9, 16], dot: "#2563EB",
     bgPrimary:      "#FFFFFF",
     bgSecondary:    "#FAFAFA",
-    bgGradient:     "linear-gradient(160deg,#FFFFFF 0%,#F8FAFF 60%,#EEF4FF 100%)",
-    inkPrimary:     "#111111",
-    inkSecondary:   "#555555",
-    inkTertiary:    "#888888",
-    border:         "#E5E5E5",
-    borderStrong:   "#CCCCCC",
-    accentPrimary:  "#2563EB",
-    accentSecondary:"#7C3AED",
-    accentGradient: "linear-gradient(120deg,#2563EB,#7C3AED)",
+    heroGradient:   "linear-gradient(160deg,#FFFFFF 0%,#F5F8FF 55%,#EBF0FF 100%)",
+    inkPrimary:     "#0A0A0A",
+    inkSecondary:   "#3A3A3A",   // bumped from #555 — more readable
+    inkTertiary:    "#666666",   // bumped from #888
+    border:         "#E0E0E0",
+    borderStrong:   "#BBBBBB",
+    accentPrimary:  "#1D55D4",
+    accentSecondary:"#6B2FD4",
+    accentGradient: "linear-gradient(120deg,#1D55D4,#6B2FD4)",
     navBg:          "#FFFFFF",
-    cardBg:         "#FAFAFA",
-    pillBg:         "#EEF4FF",
-    pillText:       "#1A4A9A",
-    pillBorder:     "#C0D8FF",
-    ctaBg:          "#111111",
+    cardBg:         "#F5F5F5",
+    pillBg:         "#E8F0FE",
+    pillText:       "#1238A0",
+    pillBorder:     "#A8C4F8",
+    ctaBg:          "#0A0A0A",
     ctaText:        "#FFFFFF",
+    outlineBorder:  "#BBBBBB",
+    outlineText:    "#0A0A0A",
   },
   dusk: {
-    mode: "dusk", label: "Dusk", hours: [16, 19], dot: "#D4537E",
-    bgPrimary:      "#1A1018",
-    bgSecondary:    "#22102A",
-    bgGradient:     "linear-gradient(160deg,#1A1018 0%,#22102A 50%,#2E1020 100%)",
-    inkPrimary:     "#F4E0EC",
-    inkSecondary:   "#B88AA8",
-    inkTertiary:    "#9A6080",
-    border:         "#3A2535",
-    borderStrong:   "#4A2038",
-    accentPrimary:  "#E8923A",
-    accentSecondary:"#D4537E",
-    accentGradient: "linear-gradient(120deg,#E8923A,#D4537E)",
-    navBg:          "#1A1018",
-    cardBg:         "#22102A",
-    pillBg:         "#2D1525",
-    pillText:       "#E8A0C8",
-    pillBorder:     "#6B3055",
-    ctaBg:          "#D4537E",
+    mode: "dusk", label: "Dusk", hours: [16, 19], dot: "#E05585",
+    bgPrimary:      "#180D16",
+    bgSecondary:    "#20102A",
+    heroGradient:   "linear-gradient(160deg,#180D16 0%,#20102A 50%,#2C0E1E 100%)",
+    inkPrimary:     "#F8E8F2",   // near-white rose — strong contrast
+    inkSecondary:   "#D4A8C4",   // light mauve — clearly readable
+    inkTertiary:    "#A87898",   // mid mauve — labels, readable
+    border:         "#3C2238",
+    borderStrong:   "#5A2848",
+    accentPrimary:  "#F07040",
+    accentSecondary:"#E05585",
+    accentGradient: "linear-gradient(120deg,#F07040,#E05585)",
+    navBg:          "#180D16",
+    cardBg:         "#20102A",
+    pillBg:         "#2A1030",
+    pillText:       "#F0A0D0",
+    pillBorder:     "#6A2858",
+    ctaBg:          "#E05585",
     ctaText:        "#FFFFFF",
+    outlineBorder:  "#5A2848",
+    outlineText:    "#F8E8F2",
   },
   twilight: {
-    mode: "twilight", label: "Twilight", hours: [19, 22], dot: "#7C3AED",
-    bgPrimary:      "#0E0E1A",
-    bgSecondary:    "#12103A",
-    bgGradient:     "linear-gradient(160deg,#0E0E1A 0%,#12103A 50%,#18103A 100%)",
-    inkPrimary:     "#E8E8FF",
-    inkSecondary:   "#9898C8",
-    inkTertiary:    "#6868A8",
-    border:         "#252540",
-    borderStrong:   "#2E2E60",
-    accentPrimary:  "#7C3AED",
-    accentSecondary:"#4A90E2",
-    accentGradient: "linear-gradient(120deg,#7C3AED,#4A90E2)",
-    navBg:          "#0E0E1A",
-    cardBg:         "#12103A",
-    pillBg:         "#18183A",
-    pillText:       "#9898E0",
-    pillBorder:     "#4040A0",
-    ctaBg:          "#7C3AED",
+    mode: "twilight", label: "Twilight", hours: [19, 22], dot: "#8B5CF6",
+    bgPrimary:      "#0C0C18",
+    bgSecondary:    "#10103A",
+    heroGradient:   "linear-gradient(160deg,#0C0C18 0%,#10103A 50%,#160E38 100%)",
+    inkPrimary:     "#EEEEFF",   // bright lavender-white — strong contrast
+    inkSecondary:   "#B0B0E0",   // light periwinkle — clearly readable
+    inkTertiary:    "#7878B0",   // mid periwinkle — bumped from #6868A8
+    border:         "#222248",
+    borderStrong:   "#303070",
+    accentPrimary:  "#8B5CF6",
+    accentSecondary:"#60A5FA",
+    accentGradient: "linear-gradient(120deg,#8B5CF6,#60A5FA)",
+    navBg:          "#0C0C18",
+    cardBg:         "#10103A",
+    pillBg:         "#18184A",
+    pillText:       "#A0A0F0",
+    pillBorder:     "#4040B0",
+    ctaBg:          "#8B5CF6",
     ctaText:        "#FFFFFF",
+    outlineBorder:  "#303070",
+    outlineText:    "#EEEEFF",
   },
   midnight: {
-    mode: "midnight", label: "Midnight", hours: [22, 5], dot: "#3838A0",
-    bgPrimary:      "#060608",
-    bgSecondary:    "#08081A",
-    bgGradient:     "linear-gradient(160deg,#060608 0%,#08081A 60%,#0A0818 100%)",
-    inkPrimary:     "#C0C0E8",
-    inkSecondary:   "#606080",
-    inkTertiary:    "#383858",
-    border:         "#141420",
-    borderStrong:   "#282840",
-    accentPrimary:  "#4040A0",
-    accentSecondary:"#5050C0",
-    accentGradient: "linear-gradient(120deg,#4040A0,#5050C0)",
-    navBg:          "#060608",
-    cardBg:         "#0E0E18",
-    pillBg:         "#0E0E18",
-    pillText:       "#6060A0",
-    pillBorder:     "#282840",
-    ctaBg:          "#1A1A3A",
-    ctaText:        "#8080C0",
+    mode: "midnight", label: "Midnight", hours: [22, 5], dot: "#5050C0",
+    bgPrimary:      "#050508",
+    bgSecondary:    "#080818",
+    heroGradient:   "linear-gradient(160deg,#050508 0%,#08081A 60%,#090815 100%)",
+    inkPrimary:     "#D8D8F8",   // bright ash-blue — was #C0C0E8, now brighter
+    inkSecondary:   "#9090C0",   // was #606080 — doubled the brightness
+    inkTertiary:    "#6060A0",   // was #383858 — much more visible
+    border:         "#181830",   // was #141420 — slightly more visible
+    borderStrong:   "#303060",   // was #282840 — more visible
+    accentPrimary:  "#7070D0",   // was #4040A0 — brighter, readable
+    accentSecondary:"#8080E0",   // was #5050C0 — brighter
+    accentGradient: "linear-gradient(120deg,#7070D0,#8080E0)",
+    navBg:          "#050508",
+    cardBg:         "#0C0C20",
+    pillBg:         "#10102A",
+    pillText:       "#9090E0",   // was #6060A0 — much more visible
+    pillBorder:     "#303060",
+    ctaBg:          "#7070D0",   // was #1A1A3A — now an actual visible button
+    ctaText:        "#FFFFFF",   // was #8080C0 — now pure white
+    outlineBorder:  "#303060",
+    outlineText:    "#D8D8F8",
   },
 };
 
@@ -143,6 +155,5 @@ export function getThemeForHour(hour: number): TimeMode {
 }
 
 export function getCurrentTheme(): TimeMode {
-  const hour = new Date().getHours();
-  return getThemeForHour(hour);
+  return getThemeForHour(new Date().getHours());
 }
