@@ -102,7 +102,8 @@ export default function ServicesPage() {
                 </div>
               </div>
 
-              <FadeIn delay={0.25} className="mt-12 pt-10 border-t" style={{ borderColor: theme.border }}>
+              <FadeIn delay={0.25}>
+                <div className="mt-12 pt-10 border-t" style={{ borderColor: theme.border }}>
                 <div className="flex flex-wrap gap-2">
                   {svc.capabilities.map(c => (
                     <span key={c} className="text-[11px] font-medium px-3 py-1.5 rounded-full"
@@ -110,6 +111,7 @@ export default function ServicesPage() {
                       {c}
                     </span>
                   ))}
+                </div>
                 </div>
               </FadeIn>
             </div>
