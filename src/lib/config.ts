@@ -50,13 +50,13 @@ export const SERVICES = [
 ] as const;
 
 export const TIMELINE = [
-  { company: "Entrepreneur",     role: "Founder & Builder",                                    period: "Early career", summary: "Built and exited a company. Gained first-hand experience in product ownership, business execution, customer acquisition and startup dynamics." },
-  { company: "RedBus",           role: "Product & Payments",                                    period: "Past",        summary: "Built payment infrastructure from scratch across Vietnam, Cambodia and Indonesia. Integrated PhonePe, Razorpay, Mobikwik and JusPay." },
-  { company: "Carl Zeiss",       role: "Senior Technical Product Owner",                        period: "Past",        summary: "Owned Order Management, Finance, Post Sales and Lens Calculation Engine. Full-cycle product ownership across Azure-native enterprise systems." },
-  { company: "Massive Dynamics", role: "CTO & Co-founder",                                     period: "Active",      summary: "Co-founded and lead technology at Massive Dynamics, an AI-native company building at the intersection of advanced systems and applied intelligence." },
-  { company: "Aurik",          role: "Fractional CTO · Technical Product Owner",              period: "Current",     summary: "Building end-to-end tech infrastructure and technical product ownership for Aurik, India's first data-backed insurance provider and marketplace creator." },
-  { company: "HR Monster",       role: "Agentic Automation Lead · Technical Product Owner",     period: "Current",     summary: "Leads automation strategy and technical product ownership. Built the Autonomous QA Intelligence Platform. Reports to CTO, coordinates ~15 engineers and designers." },
-  { company: "Sentients",        role: "Founder",                                               period: "Now",         summary: "A systems studio at the intersection of Product, AI Automation and Cognitive Computing. Shaashwath's own company and brainchild." },
+  { company: "Hebbar's",         role: "Co-Founder & Partner · SCM",                           period: "Past",    year: "2021–2023", summary: "Co-founded and partnered on SCM operations. Gained first-hand experience in product ownership, business execution, customer acquisition and startup dynamics." },
+  { company: "RedBus",           role: "Product & Payments",                                    period: "Past",    year: "2020–2024", summary: "Built payment infrastructure from scratch across Vietnam, Cambodia and Indonesia. Integrated PhonePe, Razorpay, Mobikwik and JusPay." },
+  { company: "Carl Zeiss",       role: "Senior Technical Product Owner",                        period: "Past",    year: "2024–2026", summary: "Owned Order Management, Finance, Post Sales and Lens Calculation Engine. Full-cycle product ownership across Azure-native enterprise systems." },
+  { company: "Massive Dynamics", role: "CTO & Co-founder",                                     period: "Active",  year: "2025–Present", summary: "Co-founded and lead technology at Massive Dynamics, an AI-native company building at the intersection of advanced systems and applied intelligence." },
+  { company: "Aurik",            role: "Fractional CTO · Technical Product Owner",              period: "Current", year: "2025–Present", summary: "Building end-to-end tech infrastructure and technical product ownership for Aurik, India's first data-backed insurance provider and marketplace creator." },
+  { company: "HR Monster",       role: "Agentic Automation Lead · Technical Product Owner",     period: "Current", year: "2025–Present", summary: "Leads automation strategy and technical product ownership. Built the Autonomous QA Intelligence Platform. Reports to CTO, coordinates ~15 engineers and designers." },
+  { company: "Sentients",        role: "Founder",                                               period: "Now",     year: "2026–Present", summary: "A systems studio at the intersection of Product, AI Automation and Cognitive Computing. Shaashwath's own company and brainchild." },
 ] as const;
 
 export const SYSTEMS = [

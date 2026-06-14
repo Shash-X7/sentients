@@ -153,63 +153,64 @@ export function AboutClient() {
       <section className="border-b overflow-hidden" style={{ ...bg(theme.bgPrimary), ...brd(theme.border) }}>
         <div className="flex items-start">
 
-          {/* LEFT — all content in one column, padding mirrors section-container */}
-          <div className="flex-1 min-w-0 pt-24 pb-32">
-            {/* This inner div replicates section-container's centering exactly */}
-            <div className="pl-6 md:pl-10 lg:pl-16 pr-10"
-              style={{ marginLeft: "max(calc((100vw - 1200px) / 2), 0px)", maxWidth: "600px" }}>
+          {/* LEFT — natural flow: header then scrollable timeline */}
+          <div className="flex-1 min-w-0" style={{ minWidth: 0 }}>
 
-              {/* Header */}
-              <FadeIn className="mb-14">
-                <p className="text-[11px] font-medium uppercase tracking-[0.12em] mb-5" style={s(theme.inkTertiary)}>Career</p>
-                <h2 className="text-[2.25rem] font-semibold tracking-[-0.018em] leading-[1.18]" style={s(theme.inkPrimary)}>The journey.</h2>
-              </FadeIn>
+            {/* Pinned header — sticks while timeline scrolls past */}
+            <div className="sticky top-0 z-10 pt-16 pb-8"
+              style={{ background: theme.bgPrimary, paddingLeft: "max(calc((100vw - 1200px) / 2 + 64px), 24px)", paddingRight: "40px" }}>
+              <p className="text-[11px] font-medium uppercase tracking-[0.12em] mb-4" style={s(theme.inkTertiary)}>Career</p>
+              <h2 className="text-[2.25rem] font-semibold tracking-[-0.018em] leading-[1.18]" style={s(theme.inkPrimary)}>The journey.</h2>
+            </div>
 
-              {/* Timeline */}
-              <div className="relative">
-                <div className="absolute left-[11px] top-3 bottom-3 w-px" style={{ background: theme.border }} />
-                {TIMELINE.map((step, i) => {
+            {/* Timeline — exact copy of homepage AboutPreview spacing */}
+            <div className="timeline-scroll" style={{
+              overflowY: "auto",
+              maxHeight: "calc(100vh - 160px)",
+              scrollbarWidth: "none",
+              paddingLeft: "max(calc((100vw - 1200px) / 2 + 64px), 24px)",
+              paddingRight: "40px",
+              paddingBottom: "64px",
+            }}>
+              <div className="relative flex flex-col">
+                <div className="absolute left-[7px] top-2 bottom-2 w-px" style={{ background: theme.border }} />
+                {[...TIMELINE].reverse().map((step, idx) => {
                   const active = step.period === "Current" || step.period === "Now" || step.period === "Active";
                   return (
-                    <FadeIn key={step.company} delay={i * 0.08}>
-                      <div className="relative pl-10 pb-14 last:pb-0">
-                        {active ? (
-                          <div className="absolute left-0 top-1 w-[23px] h-[23px]">
-                            <motion.div className="absolute inset-0 rounded-full"
-                              animate={{ scale: [1, 1.9, 1], opacity: [0.55, 0, 0.55] }}
-                              transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-                              style={{ background: dotColour }} />
-                            <motion.div className="absolute rounded-full"
-                              style={{ inset: 2, background: `color-mix(in srgb, ${dotColour} 30%, transparent)` }}
-                              animate={{ scale: [1, 1.5, 1], opacity: [0.6, 0, 0.6] }}
-                              transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: 0.4 }} />
-                            <div className="absolute inset-[4px] rounded-full border-2 flex items-center justify-center"
-                              style={{ borderColor: dotColour, background: `color-mix(in srgb, ${dotColour} 18%, ${theme.bgPrimary})` }}>
-                              <div className="w-2 h-2 rounded-full"
-                                style={{ background: dotColour, boxShadow: `0 0 8px 2px color-mix(in srgb, ${dotColour} 60%, transparent)` }} />
-                            </div>
+                    <div key={step.company} className={`relative pl-8 pb-8 last:pb-0 ${idx !== 0 ? 'mt-4' : ''}`}>
+                      {active ? (
+                        <div className="absolute left-0 top-1 w-[23px] h-[23px]">
+                          <motion.div className="absolute inset-0 rounded-full"
+                            animate={{ opacity: [0.4, 0.15, 0.4] }}
+                            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                            style={{ background: dotColour }} />
+                          <div className="absolute inset-[4px] rounded-full border-2 flex items-center justify-center"
+                            style={{ borderColor: dotColour, background: `color-mix(in srgb, ${dotColour} 18%, ${theme.bgPrimary})` }}>
+                            <div className="w-2 h-2 rounded-full"
+                              style={{ background: dotColour, boxShadow: `0 0 3px 0.7px color-mix(in srgb, ${dotColour} 28%, transparent)` }} />
                           </div>
-                        ) : (
-                          <div className="absolute left-0 top-1 w-[23px] h-[23px] rounded-full border-2"
-                            style={{ borderColor: theme.border, background: theme.bgPrimary }} />
-                        )}
-                        <div className="flex flex-wrap items-baseline gap-3 mb-1">
-                          <h3 className="text-[17px] font-semibold" style={s(theme.inkPrimary)}>{step.company}</h3>
-                          {active && <span className="text-[10px] font-medium uppercase tracking-wider" style={s(dotColour)}>{step.period}</span>}
                         </div>
-                        <p className="text-[11px] font-medium uppercase tracking-wider mb-3" style={s(theme.inkTertiary)}>{step.role}</p>
-                        <p className="text-[14px] leading-[1.75]" style={s(theme.inkSecondary)}>{step.summary}</p>
+                      ) : (
+                        <div className="absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full border-2"
+                          style={{ borderColor: theme.border, background: theme.bgPrimary }} />
+                      )}
+                      <div className="flex items-baseline gap-3 mb-2">
+                        <h4 className="text-[20px] font-semibold" style={s(theme.inkPrimary)}>{step.company}</h4>
+                        {active && <span className="text-[11px] font-medium uppercase tracking-wider" style={s(dotColour)}>{step.period}</span>}
+                        <span className="text-[11px] font-medium tabular-nums" style={s(theme.inkTertiary)}>{step.year}</span>
                       </div>
-                    </FadeIn>
+                      <p className="text-[12px] font-medium uppercase tracking-wider mb-3" style={s(theme.inkTertiary)}>{step.role}</p>
+                      <p className="text-[15px] leading-[1.75]" style={s(theme.inkSecondary)}>{step.summary}</p>
+                    </div>
                   );
                 })}
               </div>
-
             </div>
+
           </div>
 
-          {/* RIGHT — photo: sticky, pins to viewport top, fills to right edge */}
-          <div className="hidden lg:block flex-1" style={{ minWidth: 0 }}>
+          {/* RIGHT — photo: sticky so it pins while the timeline scrolls, bleeds to viewport right edge */}
+          <div className="hidden lg:block flex-1 relative" style={{ minWidth: 0 }}>
             <div style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden" }}>
               {!lampostError && (
                 <>

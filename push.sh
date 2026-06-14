@@ -1,6 +1,6 @@
 #!/bin/bash
 cd /Users/user/Desktop/AI/sentients
 git add -A
-git commit -m "fix: clock+weather pill always renders with placeholder, never conditionally hidden"
+git commit -m "fix: reduce glow radius 30% on active timeline dots"
 git push
 echo "✅ Pushed"
