@@ -5,18 +5,18 @@ import { useTheme } from "@/components/ThemeProvider";
 import { SITE } from "@/lib/config";
 
 const FOCUS = [
-  { id:"cognitive",  title:"Cognitive Architectures",             description:"Exploring separation of memory, reasoning and output as distinct architectural concerns — how an AI system's structure can mirror layered cognition." },
-  { id:"memory",     title:"Memory Systems",                      description:"What does persistent, structured, contextually-weighted memory look like at the architectural level — and how does it transform reasoning quality?" },
+  { id:"cognitive",  title:"Cognitive Architectures",             description:"Exploring separation of memory, reasoning and output as distinct architectural concerns, showing how an AI system's structure can mirror layered cognition." },
+  { id:"memory",     title:"Memory Systems",                      description:"What does persistent, structured, contextually-weighted memory look like at the architectural level, and how does it transform reasoning quality?" },
   { id:"reasoning",  title:"Reasoning Frameworks",                description:"Designing explicit reasoning layers that operate on structured knowledge rather than implicitly within a generation pass." },
-  { id:"human-ai",   title:"Human-AI Interaction",                description:"Interaction models for systems with genuine reasoning and memory — where the human and the system co-construct understanding." },
+  { id:"human-ai",   title:"Human-AI Interaction",                description:"Interaction models for systems with genuine reasoning and memory, where the human and the system co-construct understanding." },
   { id:"conscious",  title:"Consciousness-Inspired Computing",    description:"Applying attention, integration and predictive processing from consciousness research as design inspiration for AI architectures." },
-  { id:"emergence",  title:"Emergence & Knowledge Representation",description:"How complex behaviours emerge from structured knowledge representations — the boundary between retrieval and genuine understanding." },
+  { id:"emergence",  title:"Emergence & Knowledge Representation",description:"How complex behaviours emerge from structured knowledge representations, at the boundary between retrieval and genuine understanding." },
 ];
 
 const PROJECTS = [
-  { name:"Numocore",           subtitle:"Consciousness-based AI pipeline",  description:"An AI pipeline built around consciousness-inspired architecture — a chatbot system that reasons from awareness primitives rather than pure retrieval. More details to follow.", status:"Research · Placeholder", accent:"purple" },
+  { name:"Numocore",           subtitle:"Consciousness-based AI pipeline",  description:"An AI pipeline built around consciousness-inspired architecture, a chatbot system that reasons from awareness primitives rather than pure retrieval. More details to follow.", status:"Research · Placeholder", accent:"purple" },
   { name:"Massive Dynamics",   subtitle:"AI company · CTO & Co-founder",   description:"Co-founded AI-native company building at the intersection of advanced systems and applied intelligence. Research and product intersect here.", status:"Active company", accent:"blue" },
-  { name:"Sentients Research",  subtitle:"The studio's research track",     description:"The broader research practice behind Sentients — connecting cognitive science, information theory and systems architecture to build foundations for AI systems beyond current paradigms.", status:"Ongoing", accent:"purple" },
+  { name:"Sentients Research",  subtitle:"The studio's research track",     description:"The broader research practice behind Sentients, connecting cognitive science, information theory and systems architecture to build foundations for AI systems beyond current paradigms.", status:"Ongoing", accent:"purple" },
 ];
 
 /* Neural net SVG overlay — vectorized dots + connections at 30% opacity */
@@ -52,7 +52,7 @@ export default function ResearchPage() {
 
       {/* ── Hero — prosopo plasma neuron: consciousness / cognition ── */}
       <section className="relative py-28 overflow-hidden"
-        style={{ backgroundImage:`url("/assets/pexels-prosopo-2154802359-33596415.jpg")`, backgroundSize:"cover", backgroundPosition:"center" }}>
+        style={{ backgroundImage:`url("https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1600&q=80")`, backgroundSize:"cover", backgroundPosition:"center" }}>
         <div className="absolute inset-0" style={{ background:`rgba(${isDark?"4,4,12":"8,6,20"},0.87)` }} />
         {/* Neural net overlay on hero */}
         <div className="absolute inset-0 opacity-30 pointer-events-none">
@@ -68,7 +68,7 @@ export default function ResearchPage() {
               </span>
             </h1>
             <p className="text-[1.15rem] text-white/65 max-w-[50ch] leading-[1.7]">
-              A separate pillar from consulting — research at the frontier of what AI systems can do. Memory, reasoning, consciousness, emergence.
+              A separate pillar from consulting. Research at the frontier of what AI systems can do: memory, reasoning, consciousness, emergence.
             </p>
           </motion.div>
         </div>
@@ -155,7 +155,7 @@ export default function ResearchPage() {
 
       {/* ── CTA — yihan-wang deep red/blue nebula ── */}
       <section className="relative py-28 overflow-hidden"
-        style={{ backgroundImage:`url("/assets/pexels-yihan-wang-2148192610-30327373.jpg")`, backgroundSize:"cover", backgroundPosition:"center" }}>
+        style={{ backgroundImage:`url("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1600&q=80")`, backgroundSize:"cover", backgroundPosition:"center top" }}>
         <div className="absolute inset-0" style={{ background:`rgba(${isDark?"3,3,10":"6,4,18"},0.91)` }} />
         <div className="absolute inset-0 opacity-25 pointer-events-none">
           <NeuralNetOverlay color={theme.accentPrimary} />

@@ -16,14 +16,14 @@ export default function SystemsPage() {
       <section className="relative py-28 border-b overflow-hidden" style={{ ...bg(theme.bgPrimary), ...brd(theme.border) }}>
         {/* turgay-koca abstract cellular — desaturated, very low opacity */}
         <div className="absolute inset-0 pointer-events-none"
-          style={{ backgroundImage:`url("/assets/pexels-turgay-koca-405356598-15318001.jpg")`, backgroundSize:"cover", backgroundPosition:"center", opacity:0.05, filter:"grayscale(80%) blur(1px)" }} />
+          style={{ backgroundImage:`url("https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=80")`, backgroundSize:"cover", backgroundPosition:"center", opacity:0.05, filter:"grayscale(80%) blur(1px)" }} />
         <div className="absolute inset-0 pointer-events-none"
           style={{ background:`linear-gradient(to right, color-mix(in srgb, ${theme.accentPrimary} 6%, transparent), transparent 70%)` }} />
         <div className="section-container">
           <FadeIn>
             <p className="text-[11px] font-medium uppercase tracking-[0.12em] mb-5" style={s(theme.inkTertiary)}>Systems Built</p>
             <h1 className="text-[3.75rem] font-semibold tracking-[-0.025em] max-w-[18ch] leading-[1.08] mb-6" style={s(theme.inkPrimary)}>Show systems,<br />not jobs.</h1>
-            <p className="text-[1.25rem] max-w-[50ch] leading-[1.7]" style={s(theme.inkSecondary)}>Each entry is a system — defined by its problem, architecture and outcome. Not a bullet point on a CV.</p>
+            <p className="text-[1.25rem] max-w-[50ch] leading-[1.7]" style={s(theme.inkSecondary)}>Each entry is a system, defined by its problem, architecture and outcome. Not a bullet point on a CV.</p>
           </FadeIn>
         </div>
       </section>

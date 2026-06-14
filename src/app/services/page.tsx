@@ -9,18 +9,18 @@ const AR = () => (<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><p
 const DETAIL = {
   "ai-automation": {
     problem: "Most organisations accumulate fragile automation scripts and disconnected AI experiments. Without architectural coherence, each new model or workflow creates more complexity rather than capability.",
-    approach: "I design automation as a system — not a collection of tools. Every agentic workflow, knowledge system and autonomous pipeline is architected with clear interfaces, observable behaviour and the ability to compound value as the codebase and organisation evolve.",
+    approach: "I design automation as a system, not a collection of tools. Every agentic workflow, knowledge system and autonomous pipeline is architected with clear interfaces, observable behaviour and the ability to compound value as the codebase and organisation evolve.",
     outcomes: ["Reduction in QA and regression bottlenecks","Engineering velocity improvements through autonomous pipelines","Knowledge systems that surface the right context at the right moment","Automation infrastructure that scales with the team"],
     deliverables: ["System architecture document","Working agentic prototype or full deployment","Operational runbook and monitoring setup","Handoff documentation for internal teams"],
   },
   "product-ownership": {
-    problem: "Product and engineering frequently operate at different resolutions. Product defines what; engineering defines how — but nobody owns the system that connects them. The result is misaligned roadmaps, architectural drift and delivery that never quite matches intent.",
+    problem: "Product and engineering frequently operate at different resolutions. Product defines what; engineering defines how. But nobody owns the system that connects them. The result is misaligned roadmaps, architectural drift and delivery that never quite matches intent.",
     approach: "I own the bridge. Starting from business objectives, I translate intent into architecture, architecture into stories, and stories into production. I bring structured execution frameworks from enterprise environments into organisations that need to move at startup speed.",
     outcomes: ["Product strategy aligned to technical constraints and business objectives","Roadmaps that engineering teams can execute with confidence","Stakeholder alignment across business, product and technology","Delivery governance that reduces surprises and improves velocity"],
     deliverables: ["Product strategy document","Prioritised roadmap with architectural considerations","User stories and acceptance criteria","Release and governance playbook"],
   },
   "cognitive-ai": {
-    problem: "Current AI systems excel at pattern-matching and retrieval, but remain shallow when it comes to reasoning, memory, contextual adaptation and genuine understanding. Most production systems hit a ceiling — capable tools, not intelligent systems.",
+    problem: "Current AI systems excel at pattern-matching and retrieval, but remain shallow when it comes to reasoning, memory, contextual adaptation and genuine understanding. Most production systems hit a ceiling: capable tools, not intelligent systems.",
     approach: "Research and development at the boundary of what AI systems can do. Drawing on cognitive science, information theory and systems architecture, I design frameworks that push beyond standard LLM patterns into territory where machines can reason with richer context and sustained memory.",
     outcomes: ["Research frameworks for cognitive AI architectures","Prototype systems demonstrating novel reasoning or memory capabilities","Collaborative research papers and technical documentation","Pathways from research to production-ready cognitive systems"],
     deliverables: ["Research brief and architecture proposal","Prototype or proof-of-concept system","Technical documentation and findings","Ongoing collaboration roadmap"],
@@ -36,11 +36,11 @@ export default function ServicesPage() {
   return (
     <div className="pt-16" style={{ ...bg(theme.bgPrimary), transition: "background-color 1.2s ease" }}>
 
-      {/* Header — googledeepmind neural network wires */}
+      {/* Header */}
       <section className="relative py-28 border-b overflow-hidden" style={{ ...bg(theme.bgPrimary), ...brd(theme.border) }}>
-        {/* Neural wire image at low opacity — blends with theme */}
+        {/* Background image at low opacity */}
         <div className="absolute inset-0 pointer-events-none"
-          style={{ backgroundImage:`url("/assets/pexels-googledeepmind-17483871.jpg")`, backgroundSize:"cover", backgroundPosition:"center 40%", opacity: 0.07, mixBlendMode:"luminosity" }} />
+          style={{ backgroundImage:`url("https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1600&q=80")`, backgroundSize:"cover", backgroundPosition:"center 40%", opacity: 0.07, mixBlendMode:"luminosity" }} />
         {/* Accent-coloured tint overlay so image adopts theme colour */}
         <div className="absolute inset-0 pointer-events-none"
           style={{ background:`linear-gradient(135deg, color-mix(in srgb, ${theme.accentPrimary} 8%, transparent), transparent 60%)` }} />

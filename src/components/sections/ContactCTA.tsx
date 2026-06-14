@@ -29,7 +29,7 @@ export function ContactCTA() {
   return (
     <section className="relative py-28 overflow-hidden"
       style={{
-        backgroundImage: `url("/assets/pexels-mahdibafande-14240656.jpg")`,
+        backgroundImage: `url("https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1600&q=80")`,
         backgroundSize: "cover", backgroundPosition: "center",
       }}>
       {/* Dark overlay */}
