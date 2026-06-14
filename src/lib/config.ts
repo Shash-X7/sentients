@@ -54,6 +54,7 @@ export const TIMELINE = [
   { company: "RedBus",           role: "Product & Payments",                                    period: "Past",        summary: "Built payment infrastructure from scratch across Vietnam, Cambodia and Indonesia. Integrated PhonePe, Razorpay, Mobikwik and JusPay." },
   { company: "Carl Zeiss",       role: "Senior Technical Product Owner",                        period: "Past",        summary: "Owned Order Management, Finance, Post Sales and Lens Calculation Engine. Full-cycle product ownership across Azure-native enterprise systems." },
   { company: "Massive Dynamics", role: "CTO & Co-founder",                                     period: "Active",      summary: "Co-founded and lead technology at Massive Dynamics, an AI-native company building at the intersection of advanced systems and applied intelligence." },
+  { company: "Aurik",          role: "Fractional CTO · Technical Product Owner",              period: "Current",     summary: "Building end-to-end tech infrastructure and technical product ownership for Aurik, India's first data-backed insurance provider and marketplace creator." },
   { company: "HR Monster",       role: "Agentic Automation Lead · Technical Product Owner",     period: "Current",     summary: "Leads automation strategy and technical product ownership. Built the Autonomous QA Intelligence Platform. Reports to CTO, coordinates ~15 engineers and designers." },
   { company: "Sentients",        role: "Founder",                                               period: "Now",         summary: "A systems studio at the intersection of Product, AI Automation and Cognitive Computing. Shaashwath's own company and brainchild." },
 ] as const;
@@ -95,6 +96,15 @@ export const SYSTEMS = [
     href: "/systems/massive-dynamics",
     image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
     isMassiveDynamics: true,
+  },
+  {
+    id: "aurik",
+    title: "Aurik Insurance Platform",
+    subtitle: "India's first data-backed insurance marketplace",
+    description: "Fractional CTO engagement building end-to-end tech infrastructure and technical product ownership for Aurik, India's first data-backed insurance provider and marketplace creator.",
+    tags: ["Fractional CTO","Insurance Tech","Product Ownership"],
+    href: "/systems/aurik",
+    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80",
   },
   {
     id: "numocore",

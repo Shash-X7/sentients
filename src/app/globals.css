@@ -90,3 +90,20 @@ html { transition: background-color 1.2s ease, color 1.2s ease; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--s-bdr2); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--s-ink3); }
+
+/* ── Meteor shower ── */
+@keyframes meteor {
+  0%   { transform: rotate(215deg) translateX(0);    opacity: 1; }
+  70%  { opacity: 1; }
+  100% { transform: rotate(215deg) translateX(-600px); opacity: 0; }
+}
+
+.meteor {
+  position: absolute;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 100%);
+  animation: meteor linear infinite;
+  transform: rotate(215deg);
+  /* head glow */
+  box-shadow: 0 0 4px 1px rgba(255,255,255,0.35);
+}

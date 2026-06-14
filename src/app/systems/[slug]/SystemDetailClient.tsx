@@ -30,6 +30,12 @@ const CONTENT: Record<string, { problem: string; architecture: string[]; outcome
     outcome: "Massive Dynamics is an active, growing AI company. Detailed case study in progress, full brief coming soon.",
     learnings: ["The technical co-founder role at an AI company is fundamentally different from a traditional CTO role","Building for intelligence requires architectural decisions that most frameworks don't account for","Research and product must be continuous, not sequential"],
   },
+  "aurik": {
+    problem: "Aurik needed to build a technology foundation from scratch for India's first data-backed insurance provider and marketplace. No unified tech infrastructure existed to power data-driven underwriting, marketplace operations and customer experience simultaneously.",
+    architecture: ["End-to-end tech infrastructure design and implementation","Data pipeline architecture for insurance underwriting and risk modelling","Marketplace platform connecting providers, brokers and customers","Technical product ownership across core platform domains","Engineering team structure and delivery governance frameworks"],
+    outcome: "Engagement active. Infrastructure and product foundations being built out. Full case study to follow.",
+    learnings: ["Insurance tech requires co-designing regulatory and technical architecture from the start","Data-backed products live or die on the integrity of their data pipelines","Marketplace infrastructure and insurance infrastructure have fundamentally different scaling patterns"],
+  },
   "numocore": {
     problem: "Current AI chatbots operate through retrieval and pattern-matching. They have no model of awareness, no persistent self-reference, no capacity to reason from a first-person perspective. Numocore explores whether a consciousness-inspired architecture changes that.",
     architecture: ["Consciousness-inspired reasoning primitives as the base layer","Awareness state representation separate from knowledge retrieval","Chatbot interface grounded in self-referential reasoning rather than token prediction","Pipeline designed for introspective response generation"],

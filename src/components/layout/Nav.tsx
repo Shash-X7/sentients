@@ -17,6 +17,19 @@ const NAV_LINKS = [
 
 const PALETTE_MODES: TimeMode[] = ["dawn", "noon", "dusk", "twilight", "midnight"];
 
+const EmailIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+    <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="currentColor" strokeWidth="1.3"/>
+    <path d="M1.5 5l6.5 4.5L14.5 5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const PhoneIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+    <path d="M3 2.5h3l1.5 3.5-1.75 1a8.5 8.5 0 0 0 3.25 3.25l1-1.75 3.5 1.5v3a1 1 0 0 1-1 1C5.5 14 2 10.5 2 6.5a4 4 0 0 1 1-1z" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
 const PaletteIcon = () => (
   <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
     <circle cx="7" cy="7" r="5.5" stroke="currentColor" strokeWidth="1.3"/>
@@ -28,6 +41,70 @@ const PaletteIcon = () => (
   </svg>
 );
 
+// WMO weather code to short label
+function weatherLabel(code: number | null): string {
+  if (code === null) return "";
+  if (code === 0) return "Clear";
+  if (code <= 2)  return "Partly cloudy";
+  if (code === 3) return "Overcast";
+  if (code <= 48) return "Fog";
+  if (code <= 57) return "Drizzle";
+  if (code <= 67) return "Rain";
+  if (code <= 77) return "Snow";
+  if (code <= 82) return "Showers";
+  if (code >= 95) return "Storm";
+  return "";
+}
+
+function weatherIcon(code: number | null): string {
+  if (code === null) return "";
+  if (code === 0)  return "☀️";
+  if (code <= 2)   return "🌤️";
+  if (code === 3)  return "☁️";
+  if (code <= 48)  return "🌫️";
+  if (code <= 57)  return "🌧️";
+  if (code <= 67)  return "🌧️";
+  if (code <= 77)  return "❄️";
+  if (code <= 82)  return "🌦️";
+  if (code >= 95)  return "⚡";
+  return "🌤️";
+}
+
+function useClockAndWeather() {
+  const [time,    setTime]    = useState("");
+  const [temp,    setTemp]    = useState<number | null>(null);
+  const [wcode,   setWcode]   = useState<number | null>(null);
+
+  // Clock: tick every second
+  useEffect(() => {
+    const tick = () => {
+      const now = new Date();
+      setTime(now.toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", hour12: true, timeZone: "Asia/Kolkata" }));
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  // Weather: fetch once, then every 5 min
+  useEffect(() => {
+    const fetch_ = () => {
+      fetch("https://api.open-meteo.com/v1/forecast?latitude=12.97&longitude=77.59&current=temperature_2m,weathercode&timezone=Asia%2FKolkata")
+        .then(r => r.json())
+        .then(d => {
+          setTemp(Math.round(d?.current?.temperature_2m ?? 0));
+          setWcode(d?.current?.weathercode ?? null);
+        })
+        .catch(() => {});
+    };
+    fetch_();
+    const id = setInterval(fetch_, 5 * 60 * 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return { time, temp, wcode };
+}
+
 export function Nav() {
   const pathname = usePathname();
   const { mode, theme, setForcedMode } = useTheme();
@@ -35,6 +112,7 @@ export function Nav() {
   const [menuOpen,    setMenuOpen]    = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
   const paletteRef = useRef<HTMLDivElement>(null);
+  const { time, temp, wcode } = useClockAndWeather();
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 20);
@@ -129,6 +207,17 @@ export function Nav() {
             {/* Right controls */}
             <div className="hidden md:flex items-center gap-3">
 
+              {/* Clock + Weather pill */}
+              {time && (
+                <div
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-medium select-none"
+                  style={{ background: theme.pillBg, color: theme.pillText, border: `0.5px solid ${theme.pillBorder}` }}
+                >
+                  <span className="tabular-nums tracking-tight">{time}</span>
+                  {wcode !== null && <span>{weatherIcon(wcode)}</span>}
+                </div>
+              )}
+
               {/* Palette switcher */}
               <div ref={paletteRef} className="relative">
                 <button
@@ -138,9 +227,8 @@ export function Nav() {
                   style={{ background: theme.pillBg, color: theme.pillText, border: `0.5px solid ${theme.pillBorder}` }}
                 >
                   <PaletteIcon />
-                  Palette
                   {/* Dot row showing current mode */}
-                  <span className="flex items-center gap-[3px] ml-1">
+                  <span className="flex items-center gap-[3px]">
                     {PALETTE_MODES.map(m => (
                       <span key={m} style={{
                         width: 5, height: 5, borderRadius: "50%",
@@ -204,11 +292,16 @@ export function Nav() {
                 </AnimatePresence>
               </div>
 
-              {/* CTA */}
-              <a href="https://calendly.com/shaash-sentients" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center px-4 py-2 rounded-full text-[12px] font-medium transition-all duration-200 hover:opacity-85 active:scale-[0.98]"
+              {/* Contact icons: email + phone */}
+              <a href="mailto:shaash@sentients.in" aria-label="Email Shaashwath"
+                className="flex items-center justify-center w-8 h-8 rounded-full transition-all duration-200 hover:opacity-70 active:scale-95"
                 style={{ background: theme.ctaBg, color: theme.ctaText }}>
-                Book a Call
+                <EmailIcon />
+              </a>
+              <a href="tel:+917760732108" aria-label="Call Shaashwath"
+                className="flex items-center justify-center w-8 h-8 rounded-full transition-all duration-200 hover:opacity-70 active:scale-95"
+                style={{ background: theme.ctaBg, color: theme.ctaText }}>
+                <PhoneIcon />
               </a>
             </div>
 
@@ -266,11 +359,18 @@ export function Nav() {
                   ↺ Auto
                 </button>
               </div>
-              <a href="https://calendly.com/shaash-sentients" target="_blank" rel="noopener noreferrer"
-                className="block text-center px-6 py-2.5 rounded-full text-[13px] font-medium"
-                style={{ background: theme.ctaBg, color: theme.ctaText }}>
-                Book a Call
-              </a>
+              <div className="flex gap-3">
+                <a href="mailto:shaash@sentients.in" aria-label="Email Shaashwath"
+                  className="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 hover:opacity-70"
+                  style={{ background: theme.ctaBg, color: theme.ctaText }}>
+                  <EmailIcon />
+                </a>
+                <a href="tel:+917760732108" aria-label="Call Shaashwath"
+                  className="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 hover:opacity-70"
+                  style={{ background: theme.ctaBg, color: theme.ctaText }}>
+                  <PhoneIcon />
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
