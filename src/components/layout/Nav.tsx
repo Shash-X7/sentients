@@ -71,11 +71,9 @@ function weatherIcon(code: number | null): string {
 }
 
 function useClockAndWeather() {
-  const [time,    setTime]    = useState("");
-  const [temp,    setTemp]    = useState<number | null>(null);
-  const [wcode,   setWcode]   = useState<number | null>(null);
+  const [time,  setTime]  = useState("--:-- --");
+  const [wcode, setWcode] = useState<number | null>(null);
 
-  // Clock: tick every second
   useEffect(() => {
     const tick = () => {
       const now = new Date();
@@ -86,15 +84,11 @@ function useClockAndWeather() {
     return () => clearInterval(id);
   }, []);
 
-  // Weather: fetch once, then every 5 min
   useEffect(() => {
     const fetch_ = () => {
       fetch("https://api.open-meteo.com/v1/forecast?latitude=12.97&longitude=77.59&current=temperature_2m,weathercode&timezone=Asia%2FKolkata")
         .then(r => r.json())
-        .then(d => {
-          setTemp(Math.round(d?.current?.temperature_2m ?? 0));
-          setWcode(d?.current?.weathercode ?? null);
-        })
+        .then(d => { setWcode(d?.current?.weathercode ?? null); })
         .catch(() => {});
     };
     fetch_();
@@ -102,7 +96,7 @@ function useClockAndWeather() {
     return () => clearInterval(id);
   }, []);
 
-  return { time, temp, wcode };
+  return { time, wcode };
 }
 
 export function Nav() {
@@ -112,7 +106,7 @@ export function Nav() {
   const [menuOpen,    setMenuOpen]    = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
   const paletteRef = useRef<HTMLDivElement>(null);
-  const { time, temp, wcode } = useClockAndWeather();
+  const { time, wcode } = useClockAndWeather();
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 20);
@@ -208,15 +202,13 @@ export function Nav() {
             <div className="hidden md:flex items-center gap-3">
 
               {/* Clock + Weather pill */}
-              {time && (
-                <div
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-medium select-none"
-                  style={{ background: theme.pillBg, color: theme.pillText, border: `0.5px solid ${theme.pillBorder}` }}
-                >
-                  <span className="tabular-nums tracking-tight">{time}</span>
-                  {wcode !== null && <span>{weatherIcon(wcode)}</span>}
-                </div>
-              )}
+              <div
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-medium select-none"
+                style={{ background: theme.pillBg, color: theme.pillText, border: `0.5px solid ${theme.pillBorder}` }}
+              >
+                <span className="tabular-nums tracking-tight">{time}</span>
+                {wcode !== null && <span>{weatherIcon(wcode)}</span>}
+              </div>
 
               {/* Palette switcher */}
               <div ref={paletteRef} className="relative">

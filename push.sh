@@ -1,6 +1,6 @@
 #!/bin/bash
 cd /Users/user/Desktop/AI/sentients
 git add -A
-git commit -m "chore: disable meteor/weather effect entirely"
+git commit -m "fix: clock+weather pill always renders with placeholder, never conditionally hidden"
 git push
 echo "✅ Pushed"
