@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/components/ThemeProvider";
 import { SITE } from "@/lib/config";
@@ -8,22 +9,99 @@ const container = { hidden: {}, show: { transition: { staggerChildren: 0.11, del
 const item = { hidden: { opacity: 0, y: 22 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25,0.46,0.45,0.94] } } };
 
 export function Hero() {
-  const { theme } = useTheme();
+  const { theme, mode } = useTheme();
+
+  // Cursor-reactive orb refs
+  const orb1Ref = useRef<HTMLDivElement>(null);
+  const orb2Ref = useRef<HTMLDivElement>(null);
+  const orb3Ref = useRef<HTMLDivElement>(null);
+  const mouseRef = useRef({ x: 0.5, y: 0.5 }); // normalised 0-1
+  const rafRef   = useRef<number>(0);
+
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      mouseRef.current = {
+        x: e.clientX / window.innerWidth,
+        y: e.clientY / window.innerHeight,
+      };
+    };
+    window.addEventListener("mousemove", onMove, { passive: true });
+
+    // Smooth lerp loop — moves orbs toward cursor
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+    let cur1x = 0, cur1y = 0, cur2x = 1, cur2y = 1, cur3x = 0.8, cur3y = 0.5;
+
+    const animate = () => {
+      const { x, y } = mouseRef.current;
+      // Each orb follows at a different speed + offset
+      cur1x = lerp(cur1x, x * 0.6 - 0.2,  0.025);
+      cur1y = lerp(cur1y, y * 0.5 - 0.15, 0.025);
+      cur2x = lerp(cur2x, x * 0.4 + 0.4,  0.018);
+      cur2y = lerp(cur2y, y * 0.4 + 0.4,  0.018);
+      cur3x = lerp(cur3x, x * 0.5 + 0.3,  0.022);
+      cur3y = lerp(cur3y, y * 0.6 + 0.1,  0.022);
+
+      if (orb1Ref.current) {
+        orb1Ref.current.style.left = `${cur1x * 100}%`;
+        orb1Ref.current.style.top  = `${cur1y * 100}%`;
+      }
+      if (orb2Ref.current) {
+        orb2Ref.current.style.left = `${cur2x * 100}%`;
+        orb2Ref.current.style.top  = `${cur2y * 100}%`;
+      }
+      if (orb3Ref.current) {
+        orb3Ref.current.style.left = `${cur3x * 100}%`;
+        orb3Ref.current.style.top  = `${cur3y * 100}%`;
+      }
+      rafRef.current = requestAnimationFrame(animate);
+    };
+    rafRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16"
       style={{ background: theme.heroGradient, transition: "background 1.2s ease" }}>
 
-      {/* Dot grid */}
-      <div aria-hidden className="absolute inset-0 z-0 pointer-events-none"
-        style={{ backgroundImage:`radial-gradient(circle, ${theme.inkTertiary} 1px, transparent 1px)`, backgroundSize:"48px 48px", opacity:0.07 }} />
 
-      {/* Accent glows */}
-      <div aria-hidden className="absolute -top-40 -left-40 w-[700px] h-[700px] rounded-full pointer-events-none"
-        style={{ background:`radial-gradient(circle, color-mix(in srgb, ${theme.accentPrimary} 16%, transparent) 0%, transparent 70%)` }} />
-      <div aria-hidden className="absolute -bottom-40 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{ background:`radial-gradient(circle, color-mix(in srgb, ${theme.accentSecondary} 10%, transparent) 0%, transparent 70%)` }} />
 
+      {/* ── CURSOR-REACTIVE LIGHT LEAK ORBS ── */}
+
+      {/* Orb 1 — large primary, follows cursor slowly */}
+      <div ref={orb1Ref} aria-hidden className="absolute pointer-events-none"
+        style={{
+          width: "80vw", height: "80vw",
+          transform: "translate(-50%, -50%)",
+          background: `radial-gradient(circle, color-mix(in srgb, ${theme.accentPrimary} ${mode === "dawn" ? "55" : "30"}%, transparent) 0%, transparent 65%)`,
+          borderRadius: "50%",
+          transition: "background 1.2s ease",
+        }} />
+
+      {/* Orb 2 — secondary accent, drifts to opposite corner */}
+      <div ref={orb2Ref} aria-hidden className="absolute pointer-events-none"
+        style={{
+          width: "70vw", height: "70vw",
+          transform: "translate(-50%, -50%)",
+          background: `radial-gradient(circle, color-mix(in srgb, ${theme.accentSecondary} ${mode === "dawn" ? "45" : "22"}%, transparent) 0%, transparent 62%)`,
+          borderRadius: "50%",
+          transition: "background 1.2s ease",
+        }} />
+
+      {/* Orb 3 — smaller, faster, fills midfield */}
+      <div ref={orb3Ref} aria-hidden className="absolute pointer-events-none"
+        style={{
+          width: "50vw", height: "50vw",
+          transform: "translate(-50%, -50%)",
+          background: `radial-gradient(circle, color-mix(in srgb, ${theme.accentPrimary} ${mode === "dawn" ? "35" : "14"}%, transparent) 0%, transparent 55%)`,
+          borderRadius: "50%",
+          transition: "background 1.2s ease",
+        }} />
+
+      {/* Content */}
       <div className="section-container relative z-10">
         <motion.div variants={container} initial="hidden" animate="show" className="max-w-[900px]">
 
@@ -65,25 +143,8 @@ export function Hero() {
             </a>
           </motion.div>
 
-          <motion.div variants={item} className="mt-16 pt-8 flex flex-wrap gap-x-8 gap-y-3 pb-20"
-            style={{ borderTop:`1px solid ${theme.border}` }}>
-            {["AI Systems Automation Engineer","Technical Product Owner","Cognitive AI Systems Engineer"].map(role => (
-              <span key={role} className="text-[11px] font-medium uppercase tracking-wider"
-                style={{ color: theme.inkTertiary }}>{role}</span>
-            ))}
-          </motion.div>
-
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div initial={{ opacity:0 }} animate={{ opacity:1 }} transition={{ delay:1.4, duration:0.6 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="text-[10px] font-medium uppercase tracking-widest" style={{ color:theme.inkTertiary }}>Scroll</span>
-        <motion.div animate={{ y:[0,6,0] }} transition={{ repeat:Infinity, duration:1.8, ease:"easeInOut" }}
-          className="w-px h-8"
-          style={{ background:`linear-gradient(to bottom, ${theme.borderStrong}, transparent)` }} />
-      </motion.div>
     </section>
   );
 }

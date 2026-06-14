@@ -20,12 +20,16 @@ export default function CaseStudiesPage() {
   return (
     <div className="pt-16" style={{ ...bg(theme.bgPrimary), transition: "background-color 1.2s ease" }}>
       <section className="relative py-28 border-b overflow-hidden" style={{ ...bg(theme.bgPrimary), ...brd(theme.border) }}>
-        {/* shubhamdhage AI humanoid — right-aligned, very subtle */}
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ backgroundImage:`url("/assets/pexels-shubhamdhage-37911158.jpg")`, backgroundSize:"contain", backgroundPosition:"right center", backgroundRepeat:"no-repeat", opacity:0.06 }} />
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ background:`linear-gradient(to right, ${theme.bgPrimary} 40%, transparent 80%)` }} />
-        <div className="section-container">
+        {/* Neural net — full bleed across entire header */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1400 400" preserveAspectRatio="xMidYMid slice" aria-hidden>
+          {[[0,200,200,80],[200,80,400,200],[400,200,600,60],[600,60,800,200],[800,200,1000,80],[1000,80,1200,200],[1200,200,1400,100],[100,80,250,300],[350,200,250,300],[350,200,500,320],[600,60,500,320],[600,60,700,310],[800,200,700,310],[1000,80,900,320],[1200,200,1100,300],[100,80,0,0],[1300,100,1400,0]].map(([x1,y1,x2,y2],i)=>(
+            <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke={theme.accentPrimary} strokeWidth="0.7" strokeOpacity="0.18"/>
+          ))}
+          {[[0,200],[200,80],[400,200],[600,60],[800,200],[1000,80],[1200,200],[1400,100],[250,300],[500,320],[700,310],[900,320],[1100,300]].map(([cx,cy],i)=>(
+            <circle key={i} cx={cx} cy={cy} r={i%3===0?5:3} fill={theme.accentPrimary} fillOpacity="0.22"/>
+          ))}
+        </svg>
+        <div className="section-container relative z-10">
           <FadeIn>
             <p className="text-[11px] font-medium uppercase tracking-[0.12em] mb-5" style={s(theme.inkTertiary)}>Case Studies</p>
             <h1 className="text-[3.75rem] font-semibold tracking-[-0.025em] max-w-[20ch] leading-[1.08] mb-6" style={s(theme.inkPrimary)}>The work, in depth.</h1>

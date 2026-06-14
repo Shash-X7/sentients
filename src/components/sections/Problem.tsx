@@ -18,9 +18,6 @@ export function Problem() {
 
   return (
     <section className="relative py-28 overflow-hidden" style={{ backgroundColor: theme.bgPrimary, borderTop: `1px solid ${theme.border}`, transition: "all 1.2s ease" }}>
-      {/* shubhamdhage AI humanoid — ghosted far right, very subtle */}
-      <div className="absolute inset-0 pointer-events-none"
-        style={{ backgroundImage:`url("/assets/pexels-shubhamdhage-37911158.jpg")`, backgroundSize:"35% auto", backgroundPosition:"right 10% center", backgroundRepeat:"no-repeat", opacity:0.04 }} />
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           <div>

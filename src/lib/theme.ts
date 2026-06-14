@@ -30,27 +30,27 @@ export interface ThemeConfig {
 
 export const THEMES: Record<TimeMode, ThemeConfig> = {
   dawn: {
-    mode: "dawn", label: "Dawn", hours: [5, 9], dot: "#E8923A",
-    bgPrimary:      "#FBF7F2",
-    bgSecondary:    "#FDF0DC",
-    heroGradient:   "linear-gradient(160deg,#FBF7F2 0%,#FDF0DC 55%,#FDDDB8 100%)",
-    inkPrimary:     "#1E0E04",   // very dark espresso — max contrast on ivory
-    inkSecondary:   "#5C3A18",   // warm dark brown — readable
-    inkTertiary:    "#8A5C30",   // mid amber-brown — labels
-    border:         "#EDE4D8",
-    borderStrong:   "#C9A070",
-    accentPrimary:  "#B85A1A",
-    accentSecondary:"#E8923A",
-    accentGradient: "linear-gradient(120deg,#B85A1A,#E8923A)",
-    navBg:          "#FBF7F2",
-    cardBg:         "#FDF0DC",
-    pillBg:         "#FDE8C8",
-    pillText:       "#7A3808",
-    pillBorder:     "#D8A060",
-    ctaBg:          "#1E0E04",
-    ctaText:        "#FBF7F2",
-    outlineBorder:  "#C9A070",
-    outlineText:    "#1E0E04",
+    mode: "dawn", label: "Dawn", hours: [5, 9], dot: "#F59E0B",
+    bgPrimary:      "#FFF3D0",   // rich golden cream
+    bgSecondary:    "#FFE8A0",   // deep amber secondary
+    heroGradient:   "linear-gradient(160deg,#FFD060 0%,#FFC030 40%,#FFB020 100%)",
+    inkPrimary:     "#1A0A00",
+    inkSecondary:   "#4A2000",
+    inkTertiary:    "#7C4010",
+    border:         "#FFD070",
+    borderStrong:   "#F0A020",
+    accentPrimary:  "#D97706",
+    accentSecondary:"#F59E0B",
+    accentGradient: "linear-gradient(120deg,#D97706,#F59E0B)",
+    navBg:          "#FFD060",   // full golden nav base — the hero orange
+    cardBg:         "#FFE8A0",
+    pillBg:         "#FFD060",
+    pillText:       "#78350F",
+    pillBorder:     "#F0A020",
+    ctaBg:          "#1A0A00",
+    ctaText:        "#FFF3D0",
+    outlineBorder:  "#F0A020",
+    outlineText:    "#1A0A00",
   },
   noon: {
     mode: "noon", label: "Noon", hours: [9, 16], dot: "#2563EB",

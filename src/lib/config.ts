@@ -66,7 +66,7 @@ export const SYSTEMS = [
     description: "Built payment systems from zero across Vietnam, Cambodia and Indonesia. Integrated multiple providers, designed dashboards and operational tooling.",
     tags: ["Distributed Systems","Payments","Product"],
     href: "/systems/payments-infrastructure",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80&auto=format&fit=crop",
+    image: "/assets/pexels-prosopo-2154802359-33596415.jpg",
   },
   {
     id: "enterprise-scm",
@@ -75,7 +75,7 @@ export const SYSTEMS = [
     description: "End-to-end ownership of Order Management, Finance, Post Sales and Lens Calculation Engine on Azure-native architecture.",
     tags: ["Enterprise","Azure","Product Ownership"],
     href: "/systems/enterprise-scm",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80&auto=format&fit=crop",
+    image: "/assets/pexels-yihan-wang-2148192610-30327373.jpg",
   },
   {
     id: "autonomous-qa",
@@ -84,7 +84,7 @@ export const SYSTEMS = [
     description: "Designed an intelligent system that monitors repositories, detects regressions, performs bug analysis and generates actionable engineering outputs.",
     tags: ["Agentic AI","Automation","QA"],
     href: "/systems/autonomous-qa",
-    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=80&auto=format&fit=crop",
+    image: "/assets/pexels-googledeepmind-17483871.jpg",
   },
   {
     id: "massive-dynamics",
@@ -93,7 +93,7 @@ export const SYSTEMS = [
     description: "Co-founded and lead technology at Massive Dynamics — an AI-native company building advanced intelligent systems. More details coming soon.",
     tags: ["Company","AI Systems","Co-founder"],
     href: "/systems/massive-dynamics",
-    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&auto=format&fit=crop",
+    image: "/assets/pexels-turgay-koca-405356598-15318001.jpg",
     isMassiveDynamics: true,
   },
   {
@@ -103,7 +103,7 @@ export const SYSTEMS = [
     description: "An AI pipeline centred on consciousness-inspired architecture — built around a chatbot system that reasons from awareness primitives rather than pure retrieval. Full details coming soon.",
     tags: ["Cognitive AI","Research","Consciousness"],
     href: "/systems/numocore",
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80&auto=format&fit=crop",
+    image: "/assets/pexels-prosopo-2154802359-33596415.jpg",
   },
   {
     id: "myitihas",
@@ -112,7 +112,7 @@ export const SYSTEMS = [
     description: "Structured intelligence system focused on deep contextual understanding and knowledge representation.",
     tags: ["Knowledge Systems","Cognitive AI","Research"],
     href: "/systems/myitihas",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80&auto=format&fit=crop",
+    image: "/assets/pexels-yihan-wang-2148192610-30327373.jpg",
   },
 ] as const;
 
