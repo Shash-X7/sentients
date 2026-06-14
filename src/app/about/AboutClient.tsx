@@ -8,12 +8,12 @@ import { useTheme } from "@/components/ThemeProvider";
 import { FOUNDER, TIMELINE, SITE } from "@/lib/config";
 
 const BIO_PARAS = [
-  "Shaashwath's career has followed an unusual trajectory. Unlike traditional Product Managers, CTOs or AI Consultants, he has consistently operated across business, technology and execution simultaneously — not sequentially.",
-  "It started with building and exiting his own company. That gave him a founder-level understanding of how businesses work beyond the technology — customer acquisition, operations, the cost of every decision.",
+  "Shaashwath's career has followed an unusual trajectory. Unlike traditional Product Managers, CTOs or AI Consultants, he has consistently operated across business, technology and execution simultaneously, not sequentially.",
+  "It started with building and exiting his own company. That gave him a founder-level understanding of how businesses work beyond the technology: customer acquisition, operations, the cost of every decision.",
   "At RedBus, he built payment infrastructure from scratch across three Southeast Asian markets. At Carl Zeiss, he owned four enterprise products simultaneously on Azure-native architecture. Each phase compounded the previous.",
-  "He co-founded Massive Dynamics, an AI-native company where he serves as CTO — building at the intersection of advanced systems and applied intelligence.",
-  "At HR Monster, he joined as Agentic Automation Lead and within two months became a critical operator — building the Autonomous QA Intelligence Platform, the Product Management Operating System and the enterprise-scale delivery framework.",
-  "In parallel, he built Numocore — a consciousness-inspired AI pipeline — and continues pushing the research frontier through Sentients, his own studio and brainchild.",
+  "He co-founded Massive Dynamics, an AI-native company where he serves as CTO, building at the intersection of advanced systems and applied intelligence.",
+  "At HR Monster, he joined as Agentic Automation Lead and within two months became a critical operator, building the Autonomous QA Intelligence Platform, the Product Management Operating System and the enterprise-scale delivery framework.",
+  "In parallel, he built Numocore, a consciousness-inspired AI pipeline, and continues pushing the research frontier through Sentients, his own studio and brainchild.",
 ];
 
 const DOT_GLOW: Record<string, string> = {
@@ -30,8 +30,8 @@ export function AboutClient() {
   const [lampostError, setLampostError] = useState(false);
 
   // Photo is monochrome B&W.
-  // Light modes (dawn/noon): photo background is lighter — use black for contrast.
-  // Dark modes (dusk/twilight/midnight): photo is dark — use white.
+  // Light modes (dawn/noon): photo background is lighter, use black for contrast.
+  // Dark modes (dusk/twilight/midnight): photo is dark, use white.
   const isLightMode    = mode === "dawn" || mode === "noon";
   const heroTextPrimary   = isLightMode ? "rgba(0,0,0,0.92)"   : "rgba(255,255,255,0.95)";
   const heroTextSecondary = isLightMode ? "rgba(0,0,0,0.65)"   : "rgba(255,255,255,0.72)";

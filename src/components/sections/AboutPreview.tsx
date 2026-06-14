@@ -15,10 +15,10 @@ export function AboutPreview() {
               <p className="text-[11px] font-medium uppercase tracking-[0.12em] mb-5" style={{ color: theme.inkTertiary }}>About</p>
               <h2 className="text-[2.25rem] font-semibold tracking-[-0.018em] leading-[1.18] mb-8" style={{ color: theme.inkPrimary }}>{FOUNDER.name}</h2>
               <p className="text-[1.1rem] leading-[1.75] mb-6 max-w-[44ch]" style={{ color: theme.inkSecondary }}>
-                AI Systems Automation Engineer, Technical Product Owner and Cognitive AI Systems Engineer — operating at the intersection of business strategy, product leadership, software architecture and emerging cognitive systems.
+                AI Systems Automation Engineer, Technical Product Owner and Cognitive AI Systems Engineer, operating at the intersection of business strategy, product leadership, software architecture and emerging cognitive systems.
               </p>
               <div className="flex flex-col gap-2 mb-10">
-                {FOUNDER.philosophy.map(p => (<p key={p} className="text-[15px] font-medium" style={{ color: theme.inkTertiary }}>— {p}</p>))}
+                {FOUNDER.philosophy.map(p => (<p key={p} className="text-[15px] font-medium" style={{ color: theme.inkTertiary }}>{p}</p>))}
               </div>
               <Button href="/about" variant="secondary" size="md">Full story</Button>
             </FadeIn>

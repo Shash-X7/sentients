@@ -50,12 +50,12 @@ export const SERVICES = [
 ] as const;
 
 export const TIMELINE = [
-  { company: "Entrepreneur",  role: "Founder & Builder",                                    period: "Early career", summary: "Built and exited a company. Gained first-hand experience in product ownership, business execution, customer acquisition and startup dynamics." },
-  { company: "RedBus",        role: "Product & Payments",                                    period: "—",           summary: "Built payment infrastructure from scratch across Vietnam, Cambodia and Indonesia. Integrated PhonePe, Razorpay, Mobikwik and JusPay." },
-  { company: "Carl Zeiss",    role: "Senior Technical Product Owner",                        period: "—",           summary: "Owned Order Management, Finance, Post Sales and Lens Calculation Engine. Full-cycle product ownership across Azure-native enterprise systems." },
-  { company: "Massive Dynamics", role: "CTO & Co-founder",                                  period: "Active",      summary: "Co-founded and lead technology at Massive Dynamics — an AI-native company building at the intersection of advanced systems and applied intelligence." },
-  { company: "HR Monster",    role: "Agentic Automation Lead · Technical Product Owner",     period: "Current",     summary: "Leads automation strategy and technical product ownership. Built the Autonomous QA Intelligence Platform. Reports to CTO, coordinates ~15 engineers and designers." },
-  { company: "Sentients",     role: "Founder",                                               period: "Now",         summary: "A systems studio at the intersection of Product, AI Automation and Cognitive Computing. Shaashwath's own company — his brainchild." },
+  { company: "Entrepreneur",     role: "Founder & Builder",                                    period: "Early career", summary: "Built and exited a company. Gained first-hand experience in product ownership, business execution, customer acquisition and startup dynamics." },
+  { company: "RedBus",           role: "Product & Payments",                                    period: "Past",        summary: "Built payment infrastructure from scratch across Vietnam, Cambodia and Indonesia. Integrated PhonePe, Razorpay, Mobikwik and JusPay." },
+  { company: "Carl Zeiss",       role: "Senior Technical Product Owner",                        period: "Past",        summary: "Owned Order Management, Finance, Post Sales and Lens Calculation Engine. Full-cycle product ownership across Azure-native enterprise systems." },
+  { company: "Massive Dynamics", role: "CTO & Co-founder",                                     period: "Active",      summary: "Co-founded and lead technology at Massive Dynamics, an AI-native company building at the intersection of advanced systems and applied intelligence." },
+  { company: "HR Monster",       role: "Agentic Automation Lead · Technical Product Owner",     period: "Current",     summary: "Leads automation strategy and technical product ownership. Built the Autonomous QA Intelligence Platform. Reports to CTO, coordinates ~15 engineers and designers." },
+  { company: "Sentients",        role: "Founder",                                               period: "Now",         summary: "A systems studio at the intersection of Product, AI Automation and Cognitive Computing. Shaashwath's own company and brainchild." },
 ] as const;
 
 export const SYSTEMS = [
@@ -66,7 +66,7 @@ export const SYSTEMS = [
     description: "Built payment systems from zero across Vietnam, Cambodia and Indonesia. Integrated multiple providers, designed dashboards and operational tooling.",
     tags: ["Distributed Systems","Payments","Product"],
     href: "/systems/payments-infrastructure",
-    image: "/assets/pexels-prosopo-2154802359-33596415.jpg",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
   },
   {
     id: "enterprise-scm",
@@ -75,7 +75,7 @@ export const SYSTEMS = [
     description: "End-to-end ownership of Order Management, Finance, Post Sales and Lens Calculation Engine on Azure-native architecture.",
     tags: ["Enterprise","Azure","Product Ownership"],
     href: "/systems/enterprise-scm",
-    image: "/assets/pexels-yihan-wang-2148192610-30327373.jpg",
+    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80",
   },
   {
     id: "autonomous-qa",
@@ -84,26 +84,26 @@ export const SYSTEMS = [
     description: "Designed an intelligent system that monitors repositories, detects regressions, performs bug analysis and generates actionable engineering outputs.",
     tags: ["Agentic AI","Automation","QA"],
     href: "/systems/autonomous-qa",
-    image: "/assets/pexels-googledeepmind-17483871.jpg",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
   },
   {
     id: "massive-dynamics",
     title: "Massive Dynamics",
     subtitle: "AI company · CTO & Co-founder",
-    description: "Co-founded and lead technology at Massive Dynamics — an AI-native company building advanced intelligent systems. More details coming soon.",
+    description: "Co-founded and lead technology at Massive Dynamics, an AI-native company building advanced intelligent systems. More details coming soon.",
     tags: ["Company","AI Systems","Co-founder"],
     href: "/systems/massive-dynamics",
-    image: "/assets/pexels-turgay-koca-405356598-15318001.jpg",
+    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
     isMassiveDynamics: true,
   },
   {
     id: "numocore",
     title: "Numocore",
     subtitle: "Consciousness-based AI pipeline",
-    description: "An AI pipeline centred on consciousness-inspired architecture — built around a chatbot system that reasons from awareness primitives rather than pure retrieval. Full details coming soon.",
+    description: "An AI pipeline centred on consciousness-inspired architecture, built around a chatbot system that reasons from awareness primitives rather than pure retrieval. Full details coming soon.",
     tags: ["Cognitive AI","Research","Consciousness"],
     href: "/systems/numocore",
-    image: "/assets/pexels-prosopo-2154802359-33596415.jpg",
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80",
   },
   {
     id: "myitihas",
@@ -112,7 +112,7 @@ export const SYSTEMS = [
     description: "Structured intelligence system focused on deep contextual understanding and knowledge representation.",
     tags: ["Knowledge Systems","Cognitive AI","Research"],
     href: "/systems/myitihas",
-    image: "/assets/pexels-yihan-wang-2148192610-30327373.jpg",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
   },
 ] as const;
 

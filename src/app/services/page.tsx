@@ -48,7 +48,7 @@ export default function ServicesPage() {
           <FadeIn>
             <p className="text-[11px] font-medium uppercase tracking-[0.12em] mb-5" style={s(theme.inkTertiary)}>Services</p>
             <h1 className="text-[3.75rem] font-semibold tracking-[-0.025em] max-w-[16ch] leading-[1.08] mb-6" style={s(theme.inkPrimary)}>What Sentients builds.</h1>
-            <p className="text-[1.25rem] max-w-[48ch] leading-[1.7]" style={s(theme.inkSecondary)}>Three distinct disciplines. One unified practice — connecting business intent to intelligent systems, from strategy through execution.</p>
+            <p className="text-[1.25rem] max-w-[48ch] leading-[1.7]" style={s(theme.inkSecondary)}>Three distinct disciplines. One unified practice, connecting business intent to intelligent systems from strategy through execution.</p>
           </FadeIn>
         </div>
       </section>
