@@ -105,7 +105,7 @@ export function AboutClient() {
             {/* Passion tag — creative single line */}
             <div className="inline-flex items-center gap-2 mt-1">
               <span className="text-[13px] tracking-wide" style={{ color: heroTextSecondary }}>
-              Motorsport &middot; Boxing &middot; Photography
+              Motorsports &middot; Boxing &middot; Photography
               </span>
             </div>
             </div>{/* end max-w wrapper */}
