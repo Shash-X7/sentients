@@ -4,6 +4,7 @@ import { Nav }            from "@/components/layout/Nav";
 import { Footer }         from "@/components/layout/Footer";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { ThemeProvider }  from "@/components/ThemeProvider";
+import { SmoothScroller } from "@/components/SmoothScroller";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sentients.in"),
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased" style={{ backgroundColor: "var(--s-bg)", color: "var(--s-ink)" }} suppressHydrationWarning>
         <ThemeProvider>
+          <SmoothScroller />
           <Nav />
           <PageTransition>
             <main>{children}</main>
