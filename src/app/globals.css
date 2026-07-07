@@ -35,7 +35,7 @@ html { transition: background-color 1.2s ease, color 1.2s ease; }
     font-feature-settings: "cv02","cv03","cv04","cv11";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
     background-color: var(--s-bg);
     color: var(--s-ink);
   }

@@ -1,6 +1,6 @@
 #!/bin/bash
 cd /Users/user/Desktop/AI/sentients
 git add -A
-git commit -m "fix: remove overshoot from smooth scroller, keep spring momentum"
+git commit -m "revert: remove SmoothScroller, restore native scroll-behavior smooth"
 git push
 echo "✅ Pushed"
