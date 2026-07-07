@@ -3,7 +3,7 @@ export const SITE = {
   domain:      "sentients.in",
   url:         "https://sentients.in",
   email:       "shaash@sentients.in",
-  calendly:    "https://calendly.com/shaash-sentients",
+  calendly:    "https://calendar.app.google/7M6hBnJd5drc74pw7",
   linkedin:    "https://linkedin.com/in/shaashwath",
   tagline:     "Build Intelligent Systems.",
   description: "Helping founders and enterprises design, build and scale AI-native systems through product leadership, automation engineering and cognitive systems research.",
