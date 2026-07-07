@@ -9,11 +9,10 @@
 import { useEffect } from "react";
 
 // Spring config — tweak these for feel
-const STIFFNESS   = 0.072;  // how fast it catches up (lower = lazier)
-const DAMPING     = 0.82;   // how much it slows down (lower = more bounce)
-const OVERSHOOT   = 0.06;   // fraction of velocity added as overshoot impulse
-const WHEEL_MULT  = 1.0;    // wheel delta multiplier
-const MIN_DELTA   = 0.05;   // stop animating below this px/frame
+const STIFFNESS   = 0.072;
+const DAMPING     = 0.82;
+const WHEEL_MULT  = 1.0;
+const MIN_DELTA   = 0.05;
 
 export function SmoothScroller() {
   useEffect(() => {
@@ -37,13 +36,7 @@ export function SmoothScroller() {
       // Spring: acceleration toward target + damping
       const delta = target - current;
       velocity    = velocity * DAMPING + delta * STIFFNESS;
-
-      // Overshoot: add a tiny impulse in the direction of motion when close
-      if (Math.abs(delta) < 60 && Math.abs(velocity) > 0.5) {
-        velocity += velocity * OVERSHOOT;
-      }
-
-      current += velocity;
+      current    += velocity;
 
       // Clamp current to valid range
       current = Math.max(0, Math.min(current, max));
